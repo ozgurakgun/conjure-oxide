@@ -43,10 +43,14 @@
 <a href="#42" id="42">42</a>
 <a href="#43" id="43">43</a>
 <a href="#44" id="44">44</a>
-<a href="#45" id="45">45</a></pre></div><pre class="rust"><code><span class="kw">use </span><span class="kw">crate</span>::ast::types::ReturnType;
-<span class="kw">use </span>std::fmt::{Debug, Display};
-
+<a href="#45" id="45">45</a>
+<a href="#46" id="46">46</a>
+<a href="#47" id="47">47</a></pre></div><pre class="rust"><code><span class="kw">use </span><span class="kw">crate</span>::ast::types::ReturnType;
 <span class="kw">use </span>serde::{Deserialize, Serialize};
+<span class="kw">use </span>std::fmt::{Debug, Display};
+<span class="kw">use </span>uniplate::{derive_unplateable, Biplate, Uniplate};
+
+<span class="macro">derive_unplateable!</span>(Metadata);
 
 <span class="attr">#[derive(Clone, Debug, PartialEq, Eq, Deserialize, Serialize, Default)]
 </span><span class="kw">pub struct </span>Metadata {

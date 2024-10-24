@@ -500,7 +500,37 @@
 <a href="#499" id="499">499</a>
 <a href="#500" id="500">500</a>
 <a href="#501" id="501">501</a>
-<a href="#502" id="502">502</a></pre></div><pre class="rust"><code><span class="comment">/************************************************************************/
+<a href="#502" id="502">502</a>
+<a href="#503" id="503">503</a>
+<a href="#504" id="504">504</a>
+<a href="#505" id="505">505</a>
+<a href="#506" id="506">506</a>
+<a href="#507" id="507">507</a>
+<a href="#508" id="508">508</a>
+<a href="#509" id="509">509</a>
+<a href="#510" id="510">510</a>
+<a href="#511" id="511">511</a>
+<a href="#512" id="512">512</a>
+<a href="#513" id="513">513</a>
+<a href="#514" id="514">514</a>
+<a href="#515" id="515">515</a>
+<a href="#516" id="516">516</a>
+<a href="#517" id="517">517</a>
+<a href="#518" id="518">518</a>
+<a href="#519" id="519">519</a>
+<a href="#520" id="520">520</a>
+<a href="#521" id="521">521</a>
+<a href="#522" id="522">522</a>
+<a href="#523" id="523">523</a>
+<a href="#524" id="524">524</a>
+<a href="#525" id="525">525</a>
+<a href="#526" id="526">526</a>
+<a href="#527" id="527">527</a>
+<a href="#528" id="528">528</a>
+<a href="#529" id="529">529</a>
+<a href="#530" id="530">530</a>
+<a href="#531" id="531">531</a>
+<a href="#532" id="532">532</a></pre></div><pre class="rust"><code><span class="comment">/************************************************************************/
 /*        Rules for translating to Minion-supported constraints         */
 /************************************************************************/
 
@@ -667,7 +697,7 @@
 * Convert a Lt to an Ineq:
 
 * ```text
-* a &lt; b =&gt; a - b &lt; -1
+* a &lt; b ~&gt; a &lt;= b -1 ~&gt; ineq(a,b,-1)
 * ```
 */
 </span><span class="attr">#[register_rule((<span class="string">"Minion"</span>, <span class="number">4100</span>))]
@@ -687,7 +717,7 @@
 * Convert a Gt to an Ineq:
 *
 * ```text
-* a &gt; b =&gt; b - a &lt; -1
+* a &gt; b ~&gt; b &lt;= a -1 ~&gt; ineq(b,a,-1)
 * ```
 */
 </span><span class="attr">#[register_rule((<span class="string">"Minion"</span>, <span class="number">4100</span>))]
@@ -707,7 +737,7 @@
 * Convert a Geq to an Ineq:
 *
 * ```text
-* a &gt;= b =&gt; b - a &lt; 0
+* a &gt;= b ~&gt; b &lt;= a + 0 ~&gt; ineq(b,a,0)
 * ```
 */
 </span><span class="attr">#[register_rule((<span class="string">"Minion"</span>, <span class="number">4100</span>))]
@@ -727,7 +757,7 @@
 * Convert a Leq to an Ineq:
 *
 * ```text
-* a &lt;= b =&gt; a - b &lt; 0
+* a &lt;= b ~&gt; a &lt;= b + 0 ~&gt; ineq(a,b,0)
 * ```
 */
 </span><span class="attr">#[register_rule((<span class="string">"Minion"</span>, <span class="number">4100</span>))]
@@ -741,6 +771,36 @@
         ))),
         <span class="kw">_ </span>=&gt; <span class="prelude-val">Err</span>(ApplicationError::RuleNotApplicable),
     }
+}
+
+<span class="doccomment">/// ```text
+/// x &lt;= y + k ~&gt; ineq(x,y,k)
+/// ```
+
+</span><span class="attr">#[register_rule((<span class="string">"Minion"</span>,<span class="number">4400</span>))]
+</span><span class="kw">fn </span>x_leq_y_plus_k_to_ineq(expr: <span class="kw-2">&amp;</span>Expr, <span class="kw">_</span>: <span class="kw-2">&amp;</span>Model) -&gt; ApplicationResult {
+    <span class="kw">let </span>Expr::Leq(<span class="kw">_</span>, x, b) = expr <span class="kw">else </span>{
+        <span class="kw">return </span><span class="prelude-val">Err</span>(ApplicationError::RuleNotApplicable);
+    };
+
+    <span class="kw">let </span>x @ Expr::Reference(<span class="kw">_</span>, <span class="kw">_</span>) = <span class="kw-2">*</span>x.to_owned() <span class="kw">else </span>{
+        <span class="kw">return </span><span class="prelude-val">Err</span>(ApplicationError::RuleNotApplicable);
+    };
+
+    <span class="kw">let </span>Expr::Sum(<span class="kw">_</span>, c) = <span class="kw-2">*</span>b.to_owned() <span class="kw">else </span>{
+        <span class="kw">return </span><span class="prelude-val">Err</span>(ApplicationError::RuleNotApplicable);
+    };
+
+    <span class="kw">let </span>[<span class="kw-2">ref </span>y @ Expr::Reference(<span class="kw">_</span>, <span class="kw">_</span>), <span class="kw-2">ref </span>k @ Expr::Constant(<span class="kw">_</span>, <span class="kw">_</span>)] = c[..] <span class="kw">else </span>{
+        <span class="kw">return </span><span class="prelude-val">Err</span>(ApplicationError::RuleNotApplicable);
+    };
+
+    <span class="prelude-val">Ok</span>(Reduction::pure(Expr::Ineq(
+        expr.get_meta().clone_dirty(),
+        Box::new(x),
+        Box::new(y.clone()),
+        Box::new(k.clone()),
+    )))
 }
 
 <span class="comment">// #[register_rule(("Minion", 99))]
