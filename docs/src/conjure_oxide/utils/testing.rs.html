@@ -230,10 +230,7 @@
 <a href="#229" id="229">229</a>
 <a href="#230" id="230">230</a>
 <a href="#231" id="231">231</a>
-<a href="#232" id="232">232</a>
-<a href="#233" id="233">233</a>
-<a href="#234" id="234">234</a>
-<a href="#235" id="235">235</a></pre></div><pre class="rust"><code><span class="kw">use </span>std::collections::{HashMap, HashSet};
+<a href="#232" id="232">232</a></pre></div><pre class="rust"><code><span class="kw">use </span>std::collections::{HashMap, HashSet};
 <span class="kw">use </span>std::fmt::Debug;
 
 <span class="kw">use </span>std::fs::File;
@@ -253,8 +250,6 @@
 <span class="kw">use </span><span class="kw">crate</span>::utils::json::sort_json_object;
 <span class="kw">use </span><span class="kw">crate</span>::utils::misc::to_set;
 <span class="kw">use </span><span class="kw">crate</span>::Model <span class="kw">as </span>ConjureModel;
-
-<span class="kw">use </span><span class="kw">super</span>::json::string_sort_json_object;
 
 <span class="kw">pub fn </span>assert_eq_any_order&lt;T: Eq + Hash + Debug + Clone&gt;(a: <span class="kw-2">&amp;</span>Vec&lt;Vec&lt;T&gt;&gt;, b: <span class="kw-2">&amp;</span>Vec&lt;Vec&lt;T&gt;&gt;) {
     <span class="macro">assert_eq!</span>(a.len(), b.len());
@@ -434,7 +429,6 @@
         .unwrap()
         .lines()
         .map(String::from)
-        .map(|s| string_sort_json_object(<span class="kw-2">&amp;</span>s, <span class="bool-val">false</span>))
         .collect();
 
     <span class="comment">//only count the number of rule in generated file (assumming the expected version already has that line and it is correct)
