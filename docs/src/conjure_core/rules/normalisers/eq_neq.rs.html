@@ -64,7 +64,7 @@
 </span><span class="kw">fn </span>negated_neq_to_eq(expr: <span class="kw-2">&amp;</span>Expr, <span class="kw">_</span>: <span class="kw-2">&amp;</span>Model) -&gt; ApplicationResult {
     <span class="kw">match </span>expr {
         Not(<span class="kw">_</span>, a) =&gt; <span class="kw">match </span>a.as_ref() {
-            Neq(<span class="kw">_</span>, b, c) <span class="kw">if </span>(!b.can_be_undefined() &amp;&amp; !c.can_be_undefined()) =&gt; {
+            Neq(<span class="kw">_</span>, b, c) <span class="kw">if </span>(b.is_safe() &amp;&amp; c.is_safe()) =&gt; {
                 <span class="prelude-val">Ok</span>(Reduction::pure(Eq(Metadata::new(), b.clone(), c.clone())))
             }
             <span class="kw">_ </span>=&gt; <span class="prelude-val">Err</span>(RuleNotApplicable),
@@ -82,7 +82,7 @@
 </span><span class="kw">fn </span>negated_eq_to_neq(expr: <span class="kw-2">&amp;</span>Expr, <span class="kw">_</span>: <span class="kw-2">&amp;</span>Model) -&gt; ApplicationResult {
     <span class="kw">match </span>expr {
         Not(<span class="kw">_</span>, a) =&gt; <span class="kw">match </span>a.as_ref() {
-            Eq(<span class="kw">_</span>, b, c) <span class="kw">if </span>(!b.can_be_undefined() &amp;&amp; !c.can_be_undefined()) =&gt; {
+            Eq(<span class="kw">_</span>, b, c) <span class="kw">if </span>(b.is_safe() &amp;&amp; c.is_safe()) =&gt; {
                 <span class="prelude-val">Ok</span>(Reduction::pure(Neq(Metadata::new(), b.clone(), c.clone())))
             }
             <span class="kw">_ </span>=&gt; <span class="prelude-val">Err</span>(RuleNotApplicable),

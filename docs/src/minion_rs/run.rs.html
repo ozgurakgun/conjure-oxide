@@ -776,7 +776,10 @@
 <a href="#775" id="775">775</a>
 <a href="#776" id="776">776</a>
 <a href="#777" id="777">777</a>
-<a href="#778" id="778">778</a></pre></div><pre class="rust"><code><span class="attr">#![allow(unreachable_patterns)]
+<a href="#778" id="778">778</a>
+<a href="#779" id="779">779</a>
+<a href="#780" id="780">780</a>
+<a href="#781" id="781">781</a></pre></div><pre class="rust"><code><span class="attr">#![allow(unreachable_patterns)]
 
 </span><span class="kw">use </span>std::{
     collections::HashMap,
@@ -938,7 +941,6 @@
 <span class="doccomment">/// Run Minion on the given [Model].
 ///
 /// The given [callback](Callback) is ran whenever a new solution set is found.
-
 </span><span class="comment">// Turn it into a warning for this function, cant unwarn it directly above callback wierdness
 </span><span class="attr">#[allow(clippy::unwrap_used)]
 </span><span class="kw">pub fn </span>run_minion(model: Model, callback: Callback) -&gt; <span class="prelude-ty">Result</span>&lt;(), MinionError&gt; {
@@ -1367,8 +1369,12 @@
             read_var(i, r_constr, b)<span class="question-mark">?</span>;
             <span class="prelude-val">Ok</span>(())
         }
-        <span class="comment">//Constraint::MinusEq(_, _) =&gt; todo!(),
-        //Constraint::GacEq(_, _) =&gt; todo!(),
+        Constraint::MinusEq(a, b) =&gt; {
+            read_var(i, r_constr, a)<span class="question-mark">?</span>;
+            read_var(i, r_constr, b)<span class="question-mark">?</span>;
+            <span class="prelude-val">Ok</span>(())
+        }
+        <span class="comment">//Constraint::GacEq(_, _) =&gt; todo!(),
         //Constraint::WatchLess(_, _) =&gt; todo!(),
         // TODO: ensure that this is a bool?
         </span>Constraint::WatchNeq(a, b) =&gt; {

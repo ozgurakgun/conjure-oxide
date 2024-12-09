@@ -176,10 +176,7 @@
 <a href="#175" id="175">175</a>
 <a href="#176" id="176">176</a>
 <a href="#177" id="177">177</a>
-<a href="#178" id="178">178</a>
-<a href="#179" id="179">179</a>
-<a href="#180" id="180">180</a>
-<a href="#181" id="181">181</a></pre></div><pre class="rust"><code><span class="kw">use super</span>::{RewriteError, RuleSet};
+<a href="#178" id="178">178</a></pre></div><pre class="rust"><code><span class="kw">use super</span>::{RewriteError, RuleSet};
 <span class="kw">use crate</span>::{
     ast::{pretty::pretty_vec, Expression <span class="kw">as </span>Expr},
     bug,
@@ -207,10 +204,7 @@
     <span class="comment">// Group rules by priority in descending order.
     </span><span class="kw">let </span><span class="kw-2">mut </span>grouped: BTreeMap&lt;u16, HashSet&lt;<span class="kw-2">&amp;</span><span class="lifetime">'a </span>Rule&lt;<span class="lifetime">'a</span>&gt;&gt;&gt; = BTreeMap::new();
     <span class="kw">for </span>(rule, priority) <span class="kw">in </span>priorities {
-        grouped
-            .entry(priority)
-            .or_insert_with(HashSet::new)
-            .insert(rule);
+        grouped.entry(priority).or_default().insert(rule);
     }
     <span class="kw">let </span>rules_by_priority: Vec&lt;(u16, HashSet&lt;<span class="kw-2">&amp;</span><span class="lifetime">'a </span>Rule&lt;<span class="lifetime">'a</span>&gt;&gt;)&gt; = grouped.into_iter().collect();
 
@@ -232,7 +226,7 @@
                             <span class="comment">// Collect applicable rules
                             </span>results.push((
                                 RuleResult {
-                                    rule: rule,
+                                    rule,
                                     reduction: red,
                                 },
                                 <span class="kw-2">*</span>priority,
@@ -270,7 +264,7 @@
                     result.reduction.new_expression
                 );
 
-                log_rule_application(result, <span class="kw-2">&amp;</span>expr);
+                log_rule_application(result, expr);
 
                 <span class="comment">// Replace expr with new_expression
                 </span>model.set_constraints(ctx(result.reduction.new_expression.clone()));

@@ -134,7 +134,8 @@
 <a href="#133" id="133">133</a>
 <a href="#134" id="134">134</a>
 <a href="#135" id="135">135</a>
-<a href="#136" id="136">136</a></pre></div><pre class="rust"><code><span class="kw">use </span>conjure_core::ast::{Atom, DecisionVariable, Expression <span class="kw">as </span>Expr, Literal <span class="kw">as </span>Lit, SymbolTable};
+<a href="#136" id="136">136</a>
+<a href="#137" id="137">137</a></pre></div><pre class="rust"><code><span class="kw">use </span>conjure_core::ast::{Atom, DecisionVariable, Expression <span class="kw">as </span>Expr, Literal <span class="kw">as </span>Lit, SymbolTable};
 <span class="kw">use </span>conjure_core::metadata::Metadata;
 <span class="kw">use </span>conjure_core::rule_engine::{
     register_rule, register_rule_set, ApplicationError, ApplicationResult, Reduction,
@@ -167,6 +168,7 @@
             | WatchedLiteral(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>)
             | DivEqUndefZero(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>)
             | ModuloEqUndefZero(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>)
+            | MinusEq(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>)
     ) {
         <span class="kw">return </span><span class="prelude-val">Err</span>(ApplicationError::RuleNotApplicable);
     }

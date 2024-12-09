@@ -554,7 +554,7 @@
 /// - true: all expressions are booleans (so can be conjuncted).
 ///
 /// - false: not all expressions are booleans.
-</span><span class="kw">fn </span>is_vec_bool(exprs: <span class="kw-2">&amp;</span>Vec&lt;Expression&gt;) -&gt; bool {
+</span><span class="kw">fn </span>is_vec_bool(exprs: <span class="kw-2">&amp;</span>[Expression]) -&gt; bool {
     exprs
         .iter()
         .all(|expr| expr.return_type() == <span class="prelude-val">Some</span>(ReturnType::Bool))

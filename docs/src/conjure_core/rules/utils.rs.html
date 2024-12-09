@@ -181,7 +181,7 @@
     }
 
     <span class="comment">// Anything that should be bubbled, bubble
-    </span><span class="kw">if </span>expr.can_be_undefined() {
+    </span><span class="kw">if </span>!expr.is_safe() {
         <span class="kw">return </span><span class="prelude-val">None</span>;
     }
 

@@ -52,15 +52,13 @@
 <a href="#51" id="51">51</a>
 <a href="#52" id="52">52</a>
 <a href="#53" id="53">53</a>
-<a href="#54" id="54">54</a>
-<a href="#55" id="55">55</a></pre></div><pre class="rust"><code><span class="kw">use </span>std::fmt::{Display, Formatter};
+<a href="#54" id="54">54</a></pre></div><pre class="rust"><code><span class="kw">use </span>std::fmt::{Display, Formatter};
 
 <span class="kw">use </span>serde::{Deserialize, Serialize};
 <span class="kw">use </span>uniplate::derive::Uniplate;
 
 <span class="attr">#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize, Uniplate, Hash)]
 #[uniplate()]
-
 </span><span class="doccomment">/// A literal value, equivalent to constants in Conjure.
 </span><span class="kw">pub enum </span>Literal {
     Int(i32),

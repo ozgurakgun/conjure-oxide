@@ -243,7 +243,12 @@
 <a href="#242" id="242">242</a>
 <a href="#243" id="243">243</a>
 <a href="#244" id="244">244</a>
-<a href="#245" id="245">245</a></pre></div><pre class="rust"><code><span class="kw">use </span>std::collections::HashSet;
+<a href="#245" id="245">245</a>
+<a href="#246" id="246">246</a>
+<a href="#247" id="247">247</a>
+<a href="#248" id="248">248</a>
+<a href="#249" id="249">249</a>
+<a href="#250" id="250">250</a></pre></div><pre class="rust"><code><span class="kw">use </span>std::collections::HashSet;
 
 <span class="kw">use </span>conjure_core::ast::{Atom, Expression <span class="kw">as </span>Expr, Literal <span class="kw">as </span>Lit};
 <span class="kw">use </span>conjure_core::metadata::Metadata;
@@ -380,6 +385,11 @@
             <span class="kw">let </span>a = unwrap_atom::&lt;i32&gt;(<span class="kw-2">&amp;</span>a.as_atom()<span class="question-mark">?</span>)<span class="question-mark">?</span>;
             <span class="kw">let </span>b = unwrap_atom::&lt;i32&gt;(<span class="kw-2">&amp;</span>b.as_atom()<span class="question-mark">?</span>)<span class="question-mark">?</span>;
             <span class="prelude-val">Some</span>(Lit::Int(a - b))
+        }
+        Expr::MinusEq(<span class="kw">_</span>, a, b) =&gt; {
+            <span class="kw">let </span>a = unwrap_atom::&lt;i32&gt;(a)<span class="question-mark">?</span>;
+            <span class="kw">let </span>b = unwrap_atom::&lt;i32&gt;(b)<span class="question-mark">?</span>;
+            <span class="prelude-val">Some</span>(Lit::Bool(a == -b))
         } <span class="comment">// _ =&gt; {
           //     warn!(%expr,"Unimplemented constant eval");
           //     None
