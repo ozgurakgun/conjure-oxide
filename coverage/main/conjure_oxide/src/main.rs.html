@@ -1308,7 +1308,7 @@
             </div>
             <div class="column has-background-white p-0"
                  role="cell">
-                <pre class="has-background-white py-0 px-2">        help = &quot;(debugging) use the naive rewriter&quot;,</pre>
+                <pre class="has-background-white py-0 px-2">        help = &quot;use the, in development, dirty-clean optimising rewriter&quot;,</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -1356,7 +1356,7 @@
             </div>
             <div class="column has-background-danger-light p-0"
                  role="cell">
-                <pre class="has-background-danger-light py-0 px-2">    use_naive_rewriter: bool,</pre>
+                <pre class="has-background-danger-light py-0 px-2">    use_optimising_rewriter: bool,</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -4284,7 +4284,7 @@
             </div>
             <div class="column has-background-danger-light p-0"
                  role="cell">
-                <pre class="has-background-danger-light py-0 px-2">    if cli.use_naive_rewriter {</pre>
+                <pre class="has-background-danger-light py-0 px-2">    if cli.use_optimising_rewriter {</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -4300,7 +4300,7 @@
             </div>
             <div class="column has-background-danger-light p-0"
                  role="cell">
-                <pre class="has-background-danger-light py-0 px-2">        log::info!(target: &quot;file&quot;, &quot;Using the naive rewriter...&quot;);</pre>
+                <pre class="has-background-danger-light py-0 px-2">        log::info!(target: &quot;file&quot;, &quot;Using the dirty-clean rewriter...&quot;);</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -4316,7 +4316,7 @@
             </div>
             <div class="column has-background-danger-light p-0"
                  role="cell">
-                <pre class="has-background-danger-light py-0 px-2">        model = rewrite_naive(&amp;model, &amp;rule_sets, false)?;</pre>
+                <pre class="has-background-danger-light py-0 px-2">        model = rewrite_model(&amp;model, &amp;rule_sets)?;</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -4364,7 +4364,7 @@
             </div>
             <div class="column has-background-danger-light p-0"
                  role="cell">
-                <pre class="has-background-danger-light py-0 px-2">        model = rewrite_model(&amp;model, &amp;rule_sets)?;</pre>
+                <pre class="has-background-danger-light py-0 px-2">        model = rewrite_naive(&amp;model, &amp;rule_sets, false)?;</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -5362,7 +5362,7 @@
 </div>
         <footer class="footer">
             <div class="content has-text-centered">
-                <p class="heading">Date: 2024-12-09 16:18</p>
+                <p class="heading">Date: 2024-12-09 23:11</p>
             </div>
         </footer>
     </body>
