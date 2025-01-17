@@ -2,20 +2,20 @@
 <html lang="en-us">
     <head><meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Grcov report - json.rs </title>
+        <title>Grcov report - lt_gt.rs </title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"></head>
     <body>
         <div class="container">
     <nav class="breadcrumb is-right" aria-label="breadcrumbs">
-        <ul><li><a href="../../../index.html">top_level</a></li><li><a href="./index.html">conjure_oxide&#x2F;src&#x2F;utils</a></li><li class="is-active"><a href="#">json.rs</a></li>
+        <ul><li><a href="../../../../../index.html">top_level</a></li><li><a href="./index.html">crates&#x2F;conjure_core&#x2F;src&#x2F;rules&#x2F;normalisers</a></li><li class="is-active"><a href="#">lt_gt.rs</a></li>
         </ul>
     </nav>
     <nav class="level">
         <div class="level-item has-text-centered">
         <div>
             <p class="heading">Lines</p>
-            <p class="title has-text-warning">
-                <abbr title="42 / 52">80.77 %</abbr></p>
+            <p class="title has-text-success">
+                <abbr title="30 / 30">100 %</abbr></p>
         </div>
     </div>
 
@@ -23,7 +23,7 @@
         <div>
             <p class="heading">Functions</p>
             <p class="title has-text-danger">
-                <abbr title="6 / 12">50 %</abbr></p>
+                <abbr title="2 / 8">25 %</abbr></p>
         </div>
     </div>
 
@@ -44,7 +44,7 @@
             </div>
             <div class="column has-background-white p-0"
                  role="cell">
-                <pre class="has-background-white py-0 px-2">use serde_json::Value;</pre>
+                <pre class="has-background-white py-0 px-2">&#x2F;&#x2F;! Normalising rules for Lt and Gt.</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -60,7 +60,7 @@
             </div>
             <div class="column has-background-white p-0"
                  role="cell">
-                <pre class="has-background-white py-0 px-2"></pre>
+                <pre class="has-background-white py-0 px-2">&#x2F;&#x2F;!</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -76,7 +76,7 @@
             </div>
             <div class="column has-background-white p-0"
                  role="cell">
-                <pre class="has-background-white py-0 px-2">&#x2F;&#x2F;&#x2F; Compare two JSON values.</pre>
+                <pre class="has-background-white py-0 px-2">&#x2F;&#x2F;! For Minion, these normalise into Leq and Geq respectively.</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -92,7 +92,7 @@
             </div>
             <div class="column has-background-white p-0"
                  role="cell">
-                <pre class="has-background-white py-0 px-2">&#x2F;&#x2F;&#x2F; If the values are String, Number, or Bool, they are compared directly.</pre>
+                <pre class="has-background-white py-0 px-2"></pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -108,7 +108,7 @@
             </div>
             <div class="column has-background-white p-0"
                  role="cell">
-                <pre class="has-background-white py-0 px-2">&#x2F;&#x2F;&#x2F; If the values are arrays, they are compared element-wise.</pre>
+                <pre class="has-background-white py-0 px-2">use conjure_macros::register_rule;</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -124,7 +124,7 @@
             </div>
             <div class="column has-background-white p-0"
                  role="cell">
-                <pre class="has-background-white py-0 px-2">&#x2F;&#x2F;&#x2F; Otherwise, they are compared as strings.</pre>
+                <pre class="has-background-white py-0 px-2"></pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -134,13 +134,13 @@
                 <a href="#7">7</a>
             </div>
             <div
-                class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
-                role="cell" aria-label="154164">
-                154164
+                class="column is-1 is-narrow p-0 has-text-centered has-text-white has-background-white"
+                role="cell" aria-label="no coverage">
+                
             </div>
-            <div class="column has-background-success-light p-0"
+            <div class="column has-background-white p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">fn json_value_cmp(a: &amp;Value, b: &amp;Value) -&gt; std::cmp::Ordering {</pre>
+                <pre class="has-background-white py-0 px-2">use crate::{</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -150,13 +150,13 @@
                 <a href="#8">8</a>
             </div>
             <div
-                class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
-                role="cell" aria-label="154164">
-                154164
+                class="column is-1 is-narrow p-0 has-text-centered has-text-white has-background-white"
+                role="cell" aria-label="no coverage">
+                
             </div>
-            <div class="column has-background-success-light p-0"
+            <div class="column has-background-white p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">    match (a, b) {</pre>
+                <pre class="has-background-white py-0 px-2">    ast::{Atom, Expression as Expr, Literal as Lit},</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -166,13 +166,13 @@
                 <a href="#9">9</a>
             </div>
             <div
-                class="column is-1 is-narrow p-0 has-text-centered has-text-danger-light has-background-danger"
-                role="cell" aria-label="0">
+                class="column is-1 is-narrow p-0 has-text-centered has-text-white has-background-white"
+                role="cell" aria-label="no coverage">
                 
             </div>
-            <div class="column has-background-danger-light p-0"
+            <div class="column has-background-white p-0"
                  role="cell">
-                <pre class="has-background-danger-light py-0 px-2">        (Value::Null, Value::Null) =&gt; std::cmp::Ordering::Equal,</pre>
+                <pre class="has-background-white py-0 px-2">    metadata::Metadata,</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -182,13 +182,13 @@
                 <a href="#10">10</a>
             </div>
             <div
-                class="column is-1 is-narrow p-0 has-text-centered has-text-danger-light has-background-danger"
-                role="cell" aria-label="0">
+                class="column is-1 is-narrow p-0 has-text-centered has-text-white has-background-white"
+                role="cell" aria-label="no coverage">
                 
             </div>
-            <div class="column has-background-danger-light p-0"
+            <div class="column has-background-white p-0"
                  role="cell">
-                <pre class="has-background-danger-light py-0 px-2">        (Value::Bool(a), Value::Bool(b)) =&gt; a.cmp(b),</pre>
+                <pre class="has-background-white py-0 px-2">    rule_engine::{ApplicationError::RuleNotApplicable, ApplicationResult, Reduction},</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -198,13 +198,13 @@
                 <a href="#11">11</a>
             </div>
             <div
-                class="column is-1 is-narrow p-0 has-text-centered has-text-danger-light has-background-danger"
-                role="cell" aria-label="0">
+                class="column is-1 is-narrow p-0 has-text-centered has-text-white has-background-white"
+                role="cell" aria-label="no coverage">
                 
             </div>
-            <div class="column has-background-danger-light p-0"
+            <div class="column has-background-white p-0"
                  role="cell">
-                <pre class="has-background-danger-light py-0 px-2">        (Value::String(a), Value::String(b)) =&gt; a.cmp(b),</pre>
+                <pre class="has-background-white py-0 px-2">    Model,</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -214,13 +214,13 @@
                 <a href="#12">12</a>
             </div>
             <div
-                class="column is-1 is-narrow p-0 has-text-centered has-text-danger-light has-background-danger"
-                role="cell" aria-label="0">
+                class="column is-1 is-narrow p-0 has-text-centered has-text-white has-background-white"
+                role="cell" aria-label="no coverage">
                 
             </div>
-            <div class="column has-background-danger-light p-0"
+            <div class="column has-background-white p-0"
                  role="cell">
-                <pre class="has-background-danger-light py-0 px-2">        (Value::Number(a), Value::Number(b)) =&gt; {</pre>
+                <pre class="has-background-white py-0 px-2">};</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -230,13 +230,13 @@
                 <a href="#13">13</a>
             </div>
             <div
-                class="column is-1 is-narrow p-0 has-text-centered has-text-danger-light has-background-danger"
-                role="cell" aria-label="0">
+                class="column is-1 is-narrow p-0 has-text-centered has-text-white has-background-white"
+                role="cell" aria-label="no coverage">
                 
             </div>
-            <div class="column has-background-danger-light p-0"
+            <div class="column has-background-white p-0"
                  role="cell">
-                <pre class="has-background-danger-light py-0 px-2">            let af = a.as_f64().unwrap_or_default();</pre>
+                <pre class="has-background-white py-0 px-2"></pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -246,13 +246,13 @@
                 <a href="#14">14</a>
             </div>
             <div
-                class="column is-1 is-narrow p-0 has-text-centered has-text-danger-light has-background-danger"
-                role="cell" aria-label="0">
+                class="column is-1 is-narrow p-0 has-text-centered has-text-white has-background-white"
+                role="cell" aria-label="no coverage">
                 
             </div>
-            <div class="column has-background-danger-light p-0"
+            <div class="column has-background-white p-0"
                  role="cell">
-                <pre class="has-background-danger-light py-0 px-2">            let bf = b.as_f64().unwrap_or_default();</pre>
+                <pre class="has-background-white py-0 px-2">&#x2F;&#x2F;&#x2F; Converts Lt to Leq</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -262,13 +262,13 @@
                 <a href="#15">15</a>
             </div>
             <div
-                class="column is-1 is-narrow p-0 has-text-centered has-text-danger-light has-background-danger"
-                role="cell" aria-label="0">
+                class="column is-1 is-narrow p-0 has-text-centered has-text-white has-background-white"
+                role="cell" aria-label="no coverage">
                 
             </div>
-            <div class="column has-background-danger-light p-0"
+            <div class="column has-background-white p-0"
                  role="cell">
-                <pre class="has-background-danger-light py-0 px-2">            af.total_cmp(&amp;bf)</pre>
+                <pre class="has-background-white py-0 px-2">&#x2F;&#x2F;&#x2F;</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -284,7 +284,7 @@
             </div>
             <div class="column has-background-white p-0"
                  role="cell">
-                <pre class="has-background-white py-0 px-2">        }</pre>
+                <pre class="has-background-white py-0 px-2">&#x2F;&#x2F;&#x2F; Minion only for now, but this could be useful for other solvers too.</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -294,13 +294,13 @@
                 <a href="#17">17</a>
             </div>
             <div
-                class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
-                role="cell" aria-label="3696">
-                3696
+                class="column is-1 is-narrow p-0 has-text-centered has-text-white has-background-white"
+                role="cell" aria-label="no coverage">
+                
             </div>
-            <div class="column has-background-success-light p-0"
+            <div class="column has-background-white p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">        (Value::Array(a), Value::Array(b)) =&gt; {</pre>
+                <pre class="has-background-white py-0 px-2">&#x2F;&#x2F;&#x2F;</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -310,13 +310,13 @@
                 <a href="#18">18</a>
             </div>
             <div
-                class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
-                role="cell" aria-label="3696">
-                3696
+                class="column is-1 is-narrow p-0 has-text-centered has-text-white has-background-white"
+                role="cell" aria-label="no coverage">
+                
             </div>
-            <div class="column has-background-success-light p-0"
+            <div class="column has-background-white p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">            for (a, b) in a.iter().zip(b.iter()) {</pre>
+                <pre class="has-background-white py-0 px-2">&#x2F;&#x2F;&#x2F; # Rationale</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -326,13 +326,13 @@
                 <a href="#19">19</a>
             </div>
             <div
-                class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
-                role="cell" aria-label="3696">
-                3696
+                class="column is-1 is-narrow p-0 has-text-centered has-text-white has-background-white"
+                role="cell" aria-label="no coverage">
+                
             </div>
-            <div class="column has-background-success-light p-0"
+            <div class="column has-background-white p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">                let cmp = json_value_cmp(a, b);</pre>
+                <pre class="has-background-white py-0 px-2">&#x2F;&#x2F;&#x2F;</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -342,13 +342,13 @@
                 <a href="#20">20</a>
             </div>
             <div
-                class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
-                role="cell" aria-label="3696">
-                3696
+                class="column is-1 is-narrow p-0 has-text-centered has-text-white has-background-white"
+                role="cell" aria-label="no coverage">
+                
             </div>
-            <div class="column has-background-success-light p-0"
+            <div class="column has-background-white p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">                if cmp != std::cmp::Ordering::Equal {</pre>
+                <pre class="has-background-white py-0 px-2">&#x2F;&#x2F;&#x2F; Minion supports Leq directly in some constraints, such as SumLeq, WeightedSumLeq, ...</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -358,13 +358,13 @@
                 <a href="#21">21</a>
             </div>
             <div
-                class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
-                role="cell" aria-label="3696">
-                3696
+                class="column is-1 is-narrow p-0 has-text-centered has-text-white has-background-white"
+                role="cell" aria-label="no coverage">
+                
             </div>
-            <div class="column has-background-success-light p-0"
+            <div class="column has-background-white p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">                    return cmp;</pre>
+                <pre class="has-background-white py-0 px-2">&#x2F;&#x2F;&#x2F; This transformation makes Lt work with these constraints too without needing special</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -374,13 +374,13 @@
                 <a href="#22">22</a>
             </div>
             <div
-                class="column is-1 is-narrow p-0 has-text-centered has-text-danger-light has-background-danger"
-                role="cell" aria-label="0">
+                class="column is-1 is-narrow p-0 has-text-centered has-text-white has-background-white"
+                role="cell" aria-label="no coverage">
                 
             </div>
-            <div class="column has-background-danger-light p-0"
+            <div class="column has-background-white p-0"
                  role="cell">
-                <pre class="has-background-danger-light py-0 px-2">                }</pre>
+                <pre class="has-background-white py-0 px-2">&#x2F;&#x2F;&#x2F; cases in the Minion conversion rules.</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -396,7 +396,7 @@
             </div>
             <div class="column has-background-white p-0"
                  role="cell">
-                <pre class="has-background-white py-0 px-2">            }</pre>
+                <pre class="has-background-white py-0 px-2">#[register_rule((&quot;Minion&quot;, 8400))]</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -406,13 +406,13 @@
                 <a href="#24">24</a>
             </div>
             <div
-                class="column is-1 is-narrow p-0 has-text-centered has-text-danger-light has-background-danger"
-                role="cell" aria-label="0">
-                
+                class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
+                role="cell" aria-label="278851">
+                278851
             </div>
-            <div class="column has-background-danger-light p-0"
+            <div class="column has-background-success-light p-0"
                  role="cell">
-                <pre class="has-background-danger-light py-0 px-2">            std::cmp::Ordering::Equal</pre>
+                <pre class="has-background-success-light py-0 px-2">fn lt_to_leq(expr: &amp;Expr, _: &amp;Model) -&gt; ApplicationResult {</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -422,13 +422,13 @@
                 <a href="#25">25</a>
             </div>
             <div
-                class="column is-1 is-narrow p-0 has-text-centered has-text-white has-background-white"
-                role="cell" aria-label="no coverage">
-                
+                class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
+                role="cell" aria-label="278851">
+                278851
             </div>
-            <div class="column has-background-white p-0"
+            <div class="column has-background-success-light p-0"
                  role="cell">
-                <pre class="has-background-white py-0 px-2">        }</pre>
+                <pre class="has-background-success-light py-0 px-2">    let Expr::Lt(_, lhs, rhs) = expr.clone() else {</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -439,12 +439,12 @@
             </div>
             <div
                 class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
-                role="cell" aria-label="150468">
-                150468
+                role="cell" aria-label="278392">
+                278392
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">        _ =&gt; a.to_string().cmp(&amp;b.to_string()),</pre>
+                <pre class="has-background-success-light py-0 px-2">        return Err(RuleNotApplicable);</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -460,7 +460,7 @@
             </div>
             <div class="column has-background-white p-0"
                  role="cell">
-                <pre class="has-background-white py-0 px-2">    }</pre>
+                <pre class="has-background-white py-0 px-2">    };</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -470,13 +470,13 @@
                 <a href="#28">28</a>
             </div>
             <div
-                class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
-                role="cell" aria-label="154164">
-                154164
+                class="column is-1 is-narrow p-0 has-text-centered has-text-white has-background-white"
+                role="cell" aria-label="no coverage">
+                
             </div>
-            <div class="column has-background-success-light p-0"
+            <div class="column has-background-white p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">}</pre>
+                <pre class="has-background-white py-0 px-2"></pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -492,7 +492,7 @@
             </div>
             <div class="column has-background-white p-0"
                  role="cell">
-                <pre class="has-background-white py-0 px-2"></pre>
+                <pre class="has-background-white py-0 px-2">    &#x2F;&#x2F; add to rhs so that this is in the correct form for ineq ( x &lt;= y + k)</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -502,13 +502,13 @@
                 <a href="#30">30</a>
             </div>
             <div
-                class="column is-1 is-narrow p-0 has-text-centered has-text-white has-background-white"
-                role="cell" aria-label="no coverage">
-                
+                class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
+                role="cell" aria-label="459">
+                459
             </div>
-            <div class="column has-background-white p-0"
+            <div class="column has-background-success-light p-0"
                  role="cell">
-                <pre class="has-background-white py-0 px-2">&#x2F;&#x2F;&#x2F; Sort the &quot;variables&quot; field by name.</pre>
+                <pre class="has-background-success-light py-0 px-2">    Ok(Reduction::pure(Expr::Leq(</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -518,13 +518,13 @@
                 <a href="#31">31</a>
             </div>
             <div
-                class="column is-1 is-narrow p-0 has-text-centered has-text-white has-background-white"
-                role="cell" aria-label="no coverage">
-                
+                class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
+                role="cell" aria-label="459">
+                459
             </div>
-            <div class="column has-background-white p-0"
+            <div class="column has-background-success-light p-0"
                  role="cell">
-                <pre class="has-background-white py-0 px-2">&#x2F;&#x2F;&#x2F; We have to do this separately because that field is not a JSON object, instead it&#x27;s an array of tuples.</pre>
+                <pre class="has-background-success-light py-0 px-2">        Metadata::new(),</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -535,12 +535,12 @@
             </div>
             <div
                 class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
-                role="cell" aria-label="1284">
-                1284
+                role="cell" aria-label="459">
+                459
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">pub fn sort_json_variables(value: &amp;Value) -&gt; Value {</pre>
+                <pre class="has-background-success-light py-0 px-2">        lhs,</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -551,12 +551,12 @@
             </div>
             <div
                 class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
-                role="cell" aria-label="1284">
-                1284
+                role="cell" aria-label="459">
+                459
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">    match value {</pre>
+                <pre class="has-background-success-light py-0 px-2">        Box::new(Expr::Sum(</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -567,12 +567,12 @@
             </div>
             <div
                 class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
-                role="cell" aria-label="1284">
-                1284
+                role="cell" aria-label="459">
+                459
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">        Value::Array(vars) =&gt; {</pre>
+                <pre class="has-background-success-light py-0 px-2">            Metadata::new(),</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -583,12 +583,12 @@
             </div>
             <div
                 class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
-                role="cell" aria-label="1284">
-                1284
+                role="cell" aria-label="459">
+                459
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">            let mut vars_sorted = vars.clone();</pre>
+                <pre class="has-background-success-light py-0 px-2">            vec![</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -599,12 +599,12 @@
             </div>
             <div
                 class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
-                role="cell" aria-label="1284">
-                1284
+                role="cell" aria-label="459">
+                459
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">            vars_sorted.sort_by(json_value_cmp);</pre>
+                <pre class="has-background-success-light py-0 px-2">                *rhs,</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -615,12 +615,12 @@
             </div>
             <div
                 class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
-                role="cell" aria-label="1284">
-                1284
+                role="cell" aria-label="459">
+                459
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">            Value::Array(vars_sorted)</pre>
+                <pre class="has-background-success-light py-0 px-2">                Expr::Atomic(Metadata::new(), Atom::Literal(Lit::Int(-1))),</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -630,13 +630,13 @@
                 <a href="#38">38</a>
             </div>
             <div
-                class="column is-1 is-narrow p-0 has-text-centered has-text-white has-background-white"
-                role="cell" aria-label="no coverage">
-                
+                class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
+                role="cell" aria-label="459">
+                459
             </div>
-            <div class="column has-background-white p-0"
+            <div class="column has-background-success-light p-0"
                  role="cell">
-                <pre class="has-background-white py-0 px-2">        }</pre>
+                <pre class="has-background-success-light py-0 px-2">            ],</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -646,13 +646,13 @@
                 <a href="#39">39</a>
             </div>
             <div
-                class="column is-1 is-narrow p-0 has-text-centered has-text-danger-light has-background-danger"
-                role="cell" aria-label="0">
-                
+                class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
+                role="cell" aria-label="459">
+                459
             </div>
-            <div class="column has-background-danger-light p-0"
+            <div class="column has-background-success-light p-0"
                  role="cell">
-                <pre class="has-background-danger-light py-0 px-2">        _ =&gt; value.clone(),</pre>
+                <pre class="has-background-success-light py-0 px-2">        )),</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -662,13 +662,13 @@
                 <a href="#40">40</a>
             </div>
             <div
-                class="column is-1 is-narrow p-0 has-text-centered has-text-white has-background-white"
-                role="cell" aria-label="no coverage">
-                
+                class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
+                role="cell" aria-label="459">
+                459
             </div>
-            <div class="column has-background-white p-0"
+            <div class="column has-background-success-light p-0"
                  role="cell">
-                <pre class="has-background-white py-0 px-2">    }</pre>
+                <pre class="has-background-success-light py-0 px-2">    )))</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -679,8 +679,8 @@
             </div>
             <div
                 class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
-                role="cell" aria-label="1284">
-                1284
+                role="cell" aria-label="278851">
+                278851
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
@@ -716,7 +716,7 @@
             </div>
             <div class="column has-background-white p-0"
                  role="cell">
-                <pre class="has-background-white py-0 px-2">&#x2F;&#x2F;&#x2F; Recursively sorts the keys of all JSON objects within the provided JSON value.</pre>
+                <pre class="has-background-white py-0 px-2">&#x2F;&#x2F;&#x2F; Converts Gt to Geq</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -748,7 +748,7 @@
             </div>
             <div class="column has-background-white p-0"
                  role="cell">
-                <pre class="has-background-white py-0 px-2">&#x2F;&#x2F;&#x2F; serde_json will output JSON objects in an arbitrary key order.</pre>
+                <pre class="has-background-white py-0 px-2">&#x2F;&#x2F;&#x2F; Minion only for now, but this could be useful for other solvers too.</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -764,7 +764,7 @@
             </div>
             <div class="column has-background-white p-0"
                  role="cell">
-                <pre class="has-background-white py-0 px-2">&#x2F;&#x2F;&#x2F; this is normally fine, except in our use case we wouldn&#x27;t want to update the expected output again and again.</pre>
+                <pre class="has-background-white py-0 px-2">&#x2F;&#x2F;&#x2F;</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -780,7 +780,7 @@
             </div>
             <div class="column has-background-white p-0"
                  role="cell">
-                <pre class="has-background-white py-0 px-2">&#x2F;&#x2F;&#x2F; so a consistent (sorted) ordering of the keys is desirable.</pre>
+                <pre class="has-background-white py-0 px-2">&#x2F;&#x2F;&#x2F; # Rationale</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -790,13 +790,13 @@
                 <a href="#48">48</a>
             </div>
             <div
-                class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
-                role="cell" aria-label="397236">
-                397236
+                class="column is-1 is-narrow p-0 has-text-centered has-text-white has-background-white"
+                role="cell" aria-label="no coverage">
+                
             </div>
-            <div class="column has-background-success-light p-0"
+            <div class="column has-background-white p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">pub fn sort_json_object(value: &amp;Value, sort_arrays: bool) -&gt; Value {</pre>
+                <pre class="has-background-white py-0 px-2">&#x2F;&#x2F;&#x2F;</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -806,13 +806,13 @@
                 <a href="#49">49</a>
             </div>
             <div
-                class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
-                role="cell" aria-label="397236">
-                397236
+                class="column is-1 is-narrow p-0 has-text-centered has-text-white has-background-white"
+                role="cell" aria-label="no coverage">
+                
             </div>
-            <div class="column has-background-success-light p-0"
+            <div class="column has-background-white p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">    match value {</pre>
+                <pre class="has-background-white py-0 px-2">&#x2F;&#x2F;&#x2F; Minion supports Geq directly in some constraints, such as SumGeq, WeightedSumGeq, ...</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -822,13 +822,13 @@
                 <a href="#50">50</a>
             </div>
             <div
-                class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
-                role="cell" aria-label="77460">
-                77460
+                class="column is-1 is-narrow p-0 has-text-centered has-text-white has-background-white"
+                role="cell" aria-label="no coverage">
+                
             </div>
-            <div class="column has-background-success-light p-0"
+            <div class="column has-background-white p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">        Value::Object(obj) =&gt; {</pre>
+                <pre class="has-background-white py-0 px-2">&#x2F;&#x2F;&#x2F; This transformation makes Gt work with these constraints too without needing special</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -838,13 +838,13 @@
                 <a href="#51">51</a>
             </div>
             <div
-                class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
-                role="cell" aria-label="77460">
-                77460
+                class="column is-1 is-narrow p-0 has-text-centered has-text-white has-background-white"
+                role="cell" aria-label="no coverage">
+                
             </div>
-            <div class="column has-background-success-light p-0"
+            <div class="column has-background-white p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">            let mut ordered: Vec&lt;(String, Value)&gt; = obj</pre>
+                <pre class="has-background-white py-0 px-2">&#x2F;&#x2F;&#x2F; cases in the Minion conversion rules.</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -854,13 +854,13 @@
                 <a href="#52">52</a>
             </div>
             <div
-                class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
-                role="cell" aria-label="77460">
-                77460
+                class="column is-1 is-narrow p-0 has-text-centered has-text-white has-background-white"
+                role="cell" aria-label="no coverage">
+                
             </div>
-            <div class="column has-background-success-light p-0"
+            <div class="column has-background-white p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">                .iter()</pre>
+                <pre class="has-background-white py-0 px-2">#[register_rule((&quot;Minion&quot;, 8400))]</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -871,12 +871,12 @@
             </div>
             <div
                 class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
-                role="cell" aria-label="327012">
-                327012
+                role="cell" aria-label="278834">
+                278834
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">                .map(|(k, v)| {</pre>
+                <pre class="has-background-success-light py-0 px-2">fn gt_to_geq(expr: &amp;Expr, _: &amp;Model) -&gt; ApplicationResult {</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -887,12 +887,12 @@
             </div>
             <div
                 class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
-                role="cell" aria-label="327012">
-                327012
+                role="cell" aria-label="278834">
+                278834
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">                    if k == &quot;variables&quot; {</pre>
+                <pre class="has-background-success-light py-0 px-2">    let Expr::Gt(_, lhs, total) = expr.clone() else {</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -903,12 +903,12 @@
             </div>
             <div
                 class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
-                role="cell" aria-label="1284">
-                1284
+                role="cell" aria-label="278800">
+                278800
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">                        (k.clone(), sort_json_variables(v))</pre>
+                <pre class="has-background-success-light py-0 px-2">        return Err(RuleNotApplicable);</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -924,7 +924,7 @@
             </div>
             <div class="column has-background-white p-0"
                  role="cell">
-                <pre class="has-background-white py-0 px-2">                    } else {</pre>
+                <pre class="has-background-white py-0 px-2">    };</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
@@ -932,278 +932,6 @@
                 id="57"
                 role="cell">
                 <a href="#57">57</a>
-            </div>
-            <div
-                class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
-                role="cell" aria-label="325728">
-                325728
-            </div>
-            <div class="column has-background-success-light p-0"
-                 role="cell">
-                <pre class="has-background-success-light py-0 px-2">                        (k.clone(), sort_json_object(v, sort_arrays))</pre>
-            </div>
-        </div><div class="columns p-0 m-0" role="row">
-            <div
-                class="column is-1 is-narrow p-0 has-text-centered"
-                id="58"
-                role="cell">
-                <a href="#58">58</a>
-            </div>
-            <div
-                class="column is-1 is-narrow p-0 has-text-centered has-text-white has-background-white"
-                role="cell" aria-label="no coverage">
-                
-            </div>
-            <div class="column has-background-white p-0"
-                 role="cell">
-                <pre class="has-background-white py-0 px-2">                    }</pre>
-            </div>
-        </div><div class="columns p-0 m-0" role="row">
-            <div
-                class="column is-1 is-narrow p-0 has-text-centered"
-                id="59"
-                role="cell">
-                <a href="#59">59</a>
-            </div>
-            <div
-                class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
-                role="cell" aria-label="327012">
-                327012
-            </div>
-            <div class="column has-background-success-light p-0"
-                 role="cell">
-                <pre class="has-background-success-light py-0 px-2">                })</pre>
-            </div>
-        </div><div class="columns p-0 m-0" role="row">
-            <div
-                class="column is-1 is-narrow p-0 has-text-centered"
-                id="60"
-                role="cell">
-                <a href="#60">60</a>
-            </div>
-            <div
-                class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
-                role="cell" aria-label="77460">
-                77460
-            </div>
-            <div class="column has-background-success-light p-0"
-                 role="cell">
-                <pre class="has-background-success-light py-0 px-2">                .collect();</pre>
-            </div>
-        </div><div class="columns p-0 m-0" role="row">
-            <div
-                class="column is-1 is-narrow p-0 has-text-centered"
-                id="61"
-                role="cell">
-                <a href="#61">61</a>
-            </div>
-            <div
-                class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
-                role="cell" aria-label="77460">
-                77460
-            </div>
-            <div class="column has-background-success-light p-0"
-                 role="cell">
-                <pre class="has-background-success-light py-0 px-2"></pre>
-            </div>
-        </div><div class="columns p-0 m-0" role="row">
-            <div
-                class="column is-1 is-narrow p-0 has-text-centered"
-                id="62"
-                role="cell">
-                <a href="#62">62</a>
-            </div>
-            <div
-                class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
-                role="cell" aria-label="474222">
-                474222
-            </div>
-            <div class="column has-background-success-light p-0"
-                 role="cell">
-                <pre class="has-background-success-light py-0 px-2">            ordered.sort_by(|a, b| a.0.cmp(&amp;b.0));</pre>
-            </div>
-        </div><div class="columns p-0 m-0" role="row">
-            <div
-                class="column is-1 is-narrow p-0 has-text-centered"
-                id="63"
-                role="cell">
-                <a href="#63">63</a>
-            </div>
-            <div
-                class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
-                role="cell" aria-label="77460">
-                77460
-            </div>
-            <div class="column has-background-success-light p-0"
-                 role="cell">
-                <pre class="has-background-success-light py-0 px-2">            Value::Object(ordered.into_iter().collect())</pre>
-            </div>
-        </div><div class="columns p-0 m-0" role="row">
-            <div
-                class="column is-1 is-narrow p-0 has-text-centered"
-                id="64"
-                role="cell">
-                <a href="#64">64</a>
-            </div>
-            <div
-                class="column is-1 is-narrow p-0 has-text-centered has-text-white has-background-white"
-                role="cell" aria-label="no coverage">
-                
-            </div>
-            <div class="column has-background-white p-0"
-                 role="cell">
-                <pre class="has-background-white py-0 px-2">        }</pre>
-            </div>
-        </div><div class="columns p-0 m-0" role="row">
-            <div
-                class="column is-1 is-narrow p-0 has-text-centered"
-                id="65"
-                role="cell">
-                <a href="#65">65</a>
-            </div>
-            <div
-                class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
-                role="cell" aria-label="15612">
-                15612
-            </div>
-            <div class="column has-background-success-light p-0"
-                 role="cell">
-                <pre class="has-background-success-light py-0 px-2">        Value::Array(arr) =&gt; {</pre>
-            </div>
-        </div><div class="columns p-0 m-0" role="row">
-            <div
-                class="column is-1 is-narrow p-0 has-text-centered"
-                id="66"
-                role="cell">
-                <a href="#66">66</a>
-            </div>
-            <div
-                class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
-                role="cell" aria-label="15612">
-                15612
-            </div>
-            <div class="column has-background-success-light p-0"
-                 role="cell">
-                <pre class="has-background-success-light py-0 px-2">            let mut arr: Vec&lt;Value&gt; = arr</pre>
-            </div>
-        </div><div class="columns p-0 m-0" role="row">
-            <div
-                class="column is-1 is-narrow p-0 has-text-centered"
-                id="67"
-                role="cell">
-                <a href="#67">67</a>
-            </div>
-            <div
-                class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
-                role="cell" aria-label="15612">
-                15612
-            </div>
-            <div class="column has-background-success-light p-0"
-                 role="cell">
-                <pre class="has-background-success-light py-0 px-2">                .iter()</pre>
-            </div>
-        </div><div class="columns p-0 m-0" role="row">
-            <div
-                class="column is-1 is-narrow p-0 has-text-centered"
-                id="68"
-                role="cell">
-                <a href="#68">68</a>
-            </div>
-            <div
-                class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
-                role="cell" aria-label="68814">
-                68814
-            </div>
-            <div class="column has-background-success-light p-0"
-                 role="cell">
-                <pre class="has-background-success-light py-0 px-2">                .map(|val| sort_json_object(val, sort_arrays))</pre>
-            </div>
-        </div><div class="columns p-0 m-0" role="row">
-            <div
-                class="column is-1 is-narrow p-0 has-text-centered"
-                id="69"
-                role="cell">
-                <a href="#69">69</a>
-            </div>
-            <div
-                class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
-                role="cell" aria-label="15612">
-                15612
-            </div>
-            <div class="column has-background-success-light p-0"
-                 role="cell">
-                <pre class="has-background-success-light py-0 px-2">                .collect();</pre>
-            </div>
-        </div><div class="columns p-0 m-0" role="row">
-            <div
-                class="column is-1 is-narrow p-0 has-text-centered"
-                id="70"
-                role="cell">
-                <a href="#70">70</a>
-            </div>
-            <div
-                class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
-                role="cell" aria-label="15612">
-                15612
-            </div>
-            <div class="column has-background-success-light p-0"
-                 role="cell">
-                <pre class="has-background-success-light py-0 px-2"></pre>
-            </div>
-        </div><div class="columns p-0 m-0" role="row">
-            <div
-                class="column is-1 is-narrow p-0 has-text-centered"
-                id="71"
-                role="cell">
-                <a href="#71">71</a>
-            </div>
-            <div
-                class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
-                role="cell" aria-label="15612">
-                15612
-            </div>
-            <div class="column has-background-success-light p-0"
-                 role="cell">
-                <pre class="has-background-success-light py-0 px-2">            if sort_arrays {</pre>
-            </div>
-        </div><div class="columns p-0 m-0" role="row">
-            <div
-                class="column is-1 is-narrow p-0 has-text-centered"
-                id="72"
-                role="cell">
-                <a href="#72">72</a>
-            </div>
-            <div
-                class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
-                role="cell" aria-label="936">
-                936
-            </div>
-            <div class="column has-background-success-light p-0"
-                 role="cell">
-                <pre class="has-background-success-light py-0 px-2">                arr.sort_by(json_value_cmp);</pre>
-            </div>
-        </div><div class="columns p-0 m-0" role="row">
-            <div
-                class="column is-1 is-narrow p-0 has-text-centered"
-                id="73"
-                role="cell">
-                <a href="#73">73</a>
-            </div>
-            <div
-                class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
-                role="cell" aria-label="14676">
-                14676
-            </div>
-            <div class="column has-background-success-light p-0"
-                 role="cell">
-                <pre class="has-background-success-light py-0 px-2">            }</pre>
-            </div>
-        </div><div class="columns p-0 m-0" role="row">
-            <div
-                class="column is-1 is-narrow p-0 has-text-centered"
-                id="74"
-                role="cell">
-                <a href="#74">74</a>
             </div>
             <div
                 class="column is-1 is-narrow p-0 has-text-centered has-text-white has-background-white"
@@ -1217,78 +945,190 @@
         </div><div class="columns p-0 m-0" role="row">
             <div
                 class="column is-1 is-narrow p-0 has-text-centered"
-                id="75"
+                id="58"
                 role="cell">
-                <a href="#75">75</a>
+                <a href="#58">58</a>
             </div>
             <div
                 class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
-                role="cell" aria-label="15612">
-                15612
+                role="cell" aria-label="34">
+                34
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">            Value::Array(arr)</pre>
+                <pre class="has-background-success-light py-0 px-2">    Ok(Reduction::pure(Expr::Geq(</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
                 class="column is-1 is-narrow p-0 has-text-centered"
-                id="76"
+                id="59"
                 role="cell">
-                <a href="#76">76</a>
-            </div>
-            <div
-                class="column is-1 is-narrow p-0 has-text-centered has-text-white has-background-white"
-                role="cell" aria-label="no coverage">
-                
-            </div>
-            <div class="column has-background-white p-0"
-                 role="cell">
-                <pre class="has-background-white py-0 px-2">        }</pre>
-            </div>
-        </div><div class="columns p-0 m-0" role="row">
-            <div
-                class="column is-1 is-narrow p-0 has-text-centered"
-                id="77"
-                role="cell">
-                <a href="#77">77</a>
+                <a href="#59">59</a>
             </div>
             <div
                 class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
-                role="cell" aria-label="304164">
-                304164
+                role="cell" aria-label="34">
+                34
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
-                <pre class="has-background-success-light py-0 px-2">        _ =&gt; value.clone(),</pre>
+                <pre class="has-background-success-light py-0 px-2">        Metadata::new(),</pre>
             </div>
         </div><div class="columns p-0 m-0" role="row">
             <div
                 class="column is-1 is-narrow p-0 has-text-centered"
-                id="78"
+                id="60"
                 role="cell">
-                <a href="#78">78</a>
-            </div>
-            <div
-                class="column is-1 is-narrow p-0 has-text-centered has-text-white has-background-white"
-                role="cell" aria-label="no coverage">
-                
-            </div>
-            <div class="column has-background-white p-0"
-                 role="cell">
-                <pre class="has-background-white py-0 px-2">    }</pre>
-            </div>
-        </div><div class="columns p-0 m-0" role="row">
-            <div
-                class="column is-1 is-narrow p-0 has-text-centered"
-                id="79"
-                role="cell">
-                <a href="#79">79</a>
+                <a href="#60">60</a>
             </div>
             <div
                 class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
-                role="cell" aria-label="397236">
-                397236
+                role="cell" aria-label="34">
+                34
+            </div>
+            <div class="column has-background-success-light p-0"
+                 role="cell">
+                <pre class="has-background-success-light py-0 px-2">        Box::new(Expr::Sum(</pre>
+            </div>
+        </div><div class="columns p-0 m-0" role="row">
+            <div
+                class="column is-1 is-narrow p-0 has-text-centered"
+                id="61"
+                role="cell">
+                <a href="#61">61</a>
+            </div>
+            <div
+                class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
+                role="cell" aria-label="34">
+                34
+            </div>
+            <div class="column has-background-success-light p-0"
+                 role="cell">
+                <pre class="has-background-success-light py-0 px-2">            Metadata::new(),</pre>
+            </div>
+        </div><div class="columns p-0 m-0" role="row">
+            <div
+                class="column is-1 is-narrow p-0 has-text-centered"
+                id="62"
+                role="cell">
+                <a href="#62">62</a>
+            </div>
+            <div
+                class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
+                role="cell" aria-label="34">
+                34
+            </div>
+            <div class="column has-background-success-light p-0"
+                 role="cell">
+                <pre class="has-background-success-light py-0 px-2">            vec![</pre>
+            </div>
+        </div><div class="columns p-0 m-0" role="row">
+            <div
+                class="column is-1 is-narrow p-0 has-text-centered"
+                id="63"
+                role="cell">
+                <a href="#63">63</a>
+            </div>
+            <div
+                class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
+                role="cell" aria-label="34">
+                34
+            </div>
+            <div class="column has-background-success-light p-0"
+                 role="cell">
+                <pre class="has-background-success-light py-0 px-2">                *lhs,</pre>
+            </div>
+        </div><div class="columns p-0 m-0" role="row">
+            <div
+                class="column is-1 is-narrow p-0 has-text-centered"
+                id="64"
+                role="cell">
+                <a href="#64">64</a>
+            </div>
+            <div
+                class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
+                role="cell" aria-label="34">
+                34
+            </div>
+            <div class="column has-background-success-light p-0"
+                 role="cell">
+                <pre class="has-background-success-light py-0 px-2">                Expr::Atomic(Metadata::new(), Atom::Literal(Lit::Int(-1))),</pre>
+            </div>
+        </div><div class="columns p-0 m-0" role="row">
+            <div
+                class="column is-1 is-narrow p-0 has-text-centered"
+                id="65"
+                role="cell">
+                <a href="#65">65</a>
+            </div>
+            <div
+                class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
+                role="cell" aria-label="34">
+                34
+            </div>
+            <div class="column has-background-success-light p-0"
+                 role="cell">
+                <pre class="has-background-success-light py-0 px-2">            ],</pre>
+            </div>
+        </div><div class="columns p-0 m-0" role="row">
+            <div
+                class="column is-1 is-narrow p-0 has-text-centered"
+                id="66"
+                role="cell">
+                <a href="#66">66</a>
+            </div>
+            <div
+                class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
+                role="cell" aria-label="34">
+                34
+            </div>
+            <div class="column has-background-success-light p-0"
+                 role="cell">
+                <pre class="has-background-success-light py-0 px-2">        )),</pre>
+            </div>
+        </div><div class="columns p-0 m-0" role="row">
+            <div
+                class="column is-1 is-narrow p-0 has-text-centered"
+                id="67"
+                role="cell">
+                <a href="#67">67</a>
+            </div>
+            <div
+                class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
+                role="cell" aria-label="34">
+                34
+            </div>
+            <div class="column has-background-success-light p-0"
+                 role="cell">
+                <pre class="has-background-success-light py-0 px-2">        total,</pre>
+            </div>
+        </div><div class="columns p-0 m-0" role="row">
+            <div
+                class="column is-1 is-narrow p-0 has-text-centered"
+                id="68"
+                role="cell">
+                <a href="#68">68</a>
+            </div>
+            <div
+                class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
+                role="cell" aria-label="34">
+                34
+            </div>
+            <div class="column has-background-success-light p-0"
+                 role="cell">
+                <pre class="has-background-success-light py-0 px-2">    )))</pre>
+            </div>
+        </div><div class="columns p-0 m-0" role="row">
+            <div
+                class="column is-1 is-narrow p-0 has-text-centered"
+                id="69"
+                role="cell">
+                <a href="#69">69</a>
+            </div>
+            <div
+                class="column is-1 is-narrow p-0 has-text-centered has-text-success-light has-background-success"
+                role="cell" aria-label="278834">
+                278834
             </div>
             <div class="column has-background-success-light p-0"
                  role="cell">
