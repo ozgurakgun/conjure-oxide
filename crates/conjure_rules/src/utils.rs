@@ -1,7 +1,18 @@
+<<<<<<< HEAD:crates/conjure_rules/src/utils.rs
 use std::rc::Rc;
 
 use conjure_core::{
     ast::{Atom, Declaration, Domain, Expression as Expr, Name, SymbolTable},
+=======
+use crate::ast::{Declaration, SymbolTable};
+use std::cell::RefCell;
+use std::rc::Rc;
+use tracing::instrument;
+use uniplate::{Biplate, Uniplate};
+
+use crate::{
+    ast::{Atom, Domain, Expression as Expr, Name},
+>>>>>>> 88926d4c4 (refactor: remove option from rc<refcell<>> definition):crates/conjure_core/src/rules/utils.rs
     metadata::Metadata,
 };
 
@@ -111,7 +122,10 @@ pub struct ToAuxVarOutput {
 impl ToAuxVarOutput {
     /// Returns the new auxiliary variable as an `Atom`.
     pub fn as_atom(&self) -> Atom {
-        Atom::Reference(self.aux_name(), None)
+        Atom::Reference(
+            self.aux_name(),
+            Rc::new(RefCell::new(Declaration::default())),
+        )
     }
 
     /// Returns the new auxiliary variable as an `Expression`.

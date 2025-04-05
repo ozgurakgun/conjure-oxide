@@ -2,6 +2,7 @@
 /*        Rules for translating to Minion-supported constraints         */
 /************************************************************************/
 
+<<<<<<< HEAD:crates/conjure_rules/src/minion.rs
 use std::convert::TryInto;
 use std::rc::Rc;
 
@@ -20,6 +21,18 @@ use conjure_core::{
         register_rule, register_rule_set, ApplicationError, ApplicationResult, Reduction,
     },
     solver::SolverFamily,
+=======
+use crate::ast::Declaration;
+use crate::ast::{Atom, Domain, Expression as Expr, Literal as Lit, ReturnType, SymbolTable};
+use std::cell::RefCell;
+use std::convert::TryInto;
+use std::rc::Rc;
+
+use crate::matrix_expr;
+use crate::metadata::Metadata;
+use crate::rule_engine::{
+    register_rule, register_rule_set, ApplicationError, ApplicationResult, Reduction,
+>>>>>>> 88926d4c4 (refactor: remove option from rc<refcell<>> definition):crates/conjure_core/src/rules/minion.rs
 };
 
 use itertools::Itertools;
@@ -554,7 +567,11 @@ fn introduce_poweq(expr: &Expr, _: &SymbolTable) -> ApplicationResult {
         },
 
         Expr::AuxDeclaration(_, total, e) => match *e {
-            Expr::SafePow(_, a, b) => Ok((a, b, Atom::Reference(total, None))),
+            Expr::SafePow(_, a, b) => Ok((
+                a,
+                b,
+                Atom::Reference(total, Rc::new(RefCell::new(Declaration::default()))),
+            )),
             _ => Err(RuleNotApplicable),
         },
         _ => Err(RuleNotApplicable),
@@ -641,7 +658,7 @@ fn introduce_minuseq_from_aux_decl(expr: &Expr, _: &SymbolTable) -> ApplicationR
         return Err(RuleNotApplicable);
     };
 
-    let a = Atom::Reference(a.clone(), None);
+    let a = Atom::Reference(a.clone(), Rc::new(RefCell::new(Declaration::default())));
 
     let Expr::Neg(_, b) = (**b).clone() else {
         return Err(RuleNotApplicable);
@@ -749,9 +766,11 @@ fn introduce_element_from_index(expr: &Expr, _: &SymbolTable) -> ApplicationResu
             _ => Err(RuleNotApplicable),
         },
         Expr::AuxDeclaration(_, name, expr) => match *expr {
-            Expr::SafeIndex(_, subject, indices) => {
-                Ok((Atom::Reference(name, None), subject, indices))
-            }
+            Expr::SafeIndex(_, subject, indices) => Ok((
+                Atom::Reference(name, Rc::new(RefCell::new(Declaration::default()))),
+                subject,
+                indices,
+            )),
             _ => Err(RuleNotApplicable),
         },
         _ => Err(RuleNotApplicable),
