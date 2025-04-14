@@ -44,7 +44,7 @@
           "UserName": "A"
         },
         {
-          "id": 3534,
+          "id": 3265,
           "kind": {
             "ValueLetting": {
               "Atomic": [
@@ -70,7 +70,7 @@
           "UserName": "NotA"
         },
         {
-          "id": 3535,
+          "id": 3267,
           "kind": {
             "ValueLetting": {
               "Not": [
@@ -122,7 +122,7 @@
           "UserName": "b"
         },
         {
-          "id": 3536,
+          "id": 3268,
           "kind": {
             "DecisionVariable": {
               "domain": {

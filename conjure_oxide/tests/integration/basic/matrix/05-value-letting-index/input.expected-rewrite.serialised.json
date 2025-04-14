@@ -44,7 +44,7 @@
           "UserName": "a"
         },
         {
-          "id": 3659,
+          "id": 3419,
           "kind": {
             "ValueLetting": {
               "AbstractLiteral": [
@@ -279,7 +279,7 @@
           "UserName": "b"
         },
         {
-          "id": 3660,
+          "id": 3420,
           "kind": {
             "DecisionVariable": {
               "domain": {

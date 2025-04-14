@@ -59,7 +59,7 @@
           "UserName": "A"
         },
         {
-          "id": 3539,
+          "id": 3273,
           "kind": {
             "DomainLetting": "BoolDomain"
           },
@@ -73,7 +73,7 @@
           "UserName": "B"
         },
         {
-          "id": 3540,
+          "id": 3274,
           "kind": {
             "DomainLetting": {
               "IntDomain": [
@@ -96,7 +96,7 @@
           "UserName": "x"
         },
         {
-          "id": 3543,
+          "id": 3279,
           "kind": {
             "DecisionVariable": {
               "domain": "BoolDomain"
@@ -112,7 +112,7 @@
           "UserName": "y"
         },
         {
-          "id": 3544,
+          "id": 3280,
           "kind": {
             "DecisionVariable": {
               "domain": {

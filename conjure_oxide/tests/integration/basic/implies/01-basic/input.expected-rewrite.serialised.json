@@ -46,7 +46,7 @@
           "UserName": "x"
         },
         {
-          "id": 1186,
+          "id": 880,
           "kind": {
             "DecisionVariable": {
               "domain": "BoolDomain"
@@ -62,7 +62,7 @@
           "UserName": "y"
         },
         {
-          "id": 1187,
+          "id": 881,
           "kind": {
             "DecisionVariable": {
               "domain": "BoolDomain"
