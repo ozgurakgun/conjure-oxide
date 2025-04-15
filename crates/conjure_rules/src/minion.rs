@@ -2,9 +2,8 @@
 /*        Rules for translating to Minion-supported constraints         */
 /************************************************************************/
 
-<<<<<<< HEAD:crates/conjure_rules/src/minion.rs
-use std::convert::TryInto;
 use std::rc::Rc;
+use std::{cell::RefCell, convert::TryInto};
 
 use crate::{
     extra_check,
@@ -21,18 +20,6 @@ use conjure_core::{
         register_rule, register_rule_set, ApplicationError, ApplicationResult, Reduction,
     },
     solver::SolverFamily,
-=======
-use crate::ast::Declaration;
-use crate::ast::{Atom, Domain, Expression as Expr, Literal as Lit, ReturnType, SymbolTable};
-use std::cell::RefCell;
-use std::convert::TryInto;
-use std::rc::Rc;
-
-use crate::matrix_expr;
-use crate::metadata::Metadata;
-use crate::rule_engine::{
-    register_rule, register_rule_set, ApplicationError, ApplicationResult, Reduction,
->>>>>>> 88926d4c4 (refactor: remove option from rc<refcell<>> definition):crates/conjure_core/src/rules/minion.rs
 };
 
 use itertools::Itertools;

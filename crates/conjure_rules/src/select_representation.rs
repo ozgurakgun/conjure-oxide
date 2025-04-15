@@ -1,5 +1,7 @@
+use std::{cell::RefCell, rc::Rc};
+
 use conjure_core::{
-    ast::{Atom, Domain, Expression as Expr, Name, SymbolTable},
+    ast::{Atom, Declaration, Domain, Expression as Expr, Name, SymbolTable},
     bug,
     metadata::Metadata,
     representation::Representation,
@@ -7,22 +9,8 @@ use conjure_core::{
         register_rule, ApplicationError::RuleNotApplicable, ApplicationResult, Reduction,
     },
 };
-<<<<<<< HEAD:crates/conjure_rules/src/select_representation.rs
 
 use itertools::Itertools;
-=======
-use itertools::Itertools;
-use std::cell::RefCell;
-use std::rc::Rc;
-
-use crate::ast::Atom;
-use crate::ast::Declaration;
-use crate::ast::Domain;
-use crate::ast::Name;
-use crate::bug;
-use crate::metadata::Metadata;
-use crate::representation::Representation;
->>>>>>> 88926d4c4 (refactor: remove option from rc<refcell<>> definition):crates/conjure_core/src/rules/select_representation.rs
 
 #[register_rule(("Base", 8000))]
 fn select_representation(expr: &Expr, symbols: &SymbolTable) -> ApplicationResult {

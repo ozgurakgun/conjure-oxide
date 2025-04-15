@@ -1,4 +1,3 @@
-<<<<<<< HEAD:crates/conjure_rules/src/base.rs
 use std::rc::Rc;
 
 use conjure_core::{
@@ -8,16 +7,8 @@ use conjure_core::{
     rule_engine::{
         register_rule, register_rule_set, ApplicationError, ApplicationResult, Reduction,
     },
-=======
-use conjure_core::ast::{Atom, Expression as Expr, Literal as Lit, SymbolTable};
-use conjure_core::metadata::Metadata;
-use conjure_core::rule_engine::{
-    register_rule, register_rule_set, ApplicationError, ApplicationError::RuleNotApplicable,
-    ApplicationResult, Reduction,
->>>>>>> 88926d4c4 (refactor: remove option from rc<refcell<>> definition):crates/conjure_core/src/rules/base.rs
 };
 use std::cell::RefCell;
-use std::rc::Rc;
 use uniplate::Uniplate;
 
 use ApplicationError::RuleNotApplicable;

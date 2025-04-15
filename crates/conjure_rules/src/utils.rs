@@ -1,18 +1,7 @@
-<<<<<<< HEAD:crates/conjure_rules/src/utils.rs
-use std::rc::Rc;
+use std::{cell::RefCell, rc::Rc};
 
 use conjure_core::{
     ast::{Atom, Declaration, Domain, Expression as Expr, Name, SymbolTable},
-=======
-use crate::ast::{Declaration, SymbolTable};
-use std::cell::RefCell;
-use std::rc::Rc;
-use tracing::instrument;
-use uniplate::{Biplate, Uniplate};
-
-use crate::{
-    ast::{Atom, Domain, Expression as Expr, Name},
->>>>>>> 88926d4c4 (refactor: remove option from rc<refcell<>> definition):crates/conjure_core/src/rules/utils.rs
     metadata::Metadata,
 };
 
