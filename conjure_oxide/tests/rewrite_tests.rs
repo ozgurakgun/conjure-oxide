@@ -1,12 +1,4 @@
-<<<<<<< HEAD
-use std::collections::VecDeque;
-use std::process::exit;
-use std::rc::Rc;
-
-use conjure_core::rule_engine::get_all_rules;
-=======
->>>>>>> 88926d4c4 (refactor: remove option from rc<refcell<>> definition)
-use conjure_core::rule_engine::rewrite_naive;
+use conjure_core::rule_engine::{get_all_rules, rewrite_naive};
 use conjure_core::solver::SolverFamily;
 use conjure_core::{into_matrix_expr, matrix_expr};
 use conjure_oxide::{
@@ -16,14 +8,11 @@ use conjure_oxide::{
     solver::{adaptors, Solver},
     Metadata, Model, Rule,
 };
-<<<<<<< HEAD
 use conjure_rules::eval_constant;
-=======
 use std::cell::RefCell;
 use std::collections::VecDeque;
 use std::process::exit;
 use std::rc::Rc;
->>>>>>> 88926d4c4 (refactor: remove option from rc<refcell<>> definition)
 use uniplate::{Biplate, Uniplate};
 
 fn var_name_from_atom(a: &Atom) -> Name {

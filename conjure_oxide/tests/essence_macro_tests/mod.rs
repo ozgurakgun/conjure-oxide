@@ -36,7 +36,7 @@ fn test_metavar_const() {
 
 #[test]
 fn test_such_that() {
-    let expr = essence_expr!(such that x + 2 > y);
+    let expr = essence_expr!(x + 2 > y);
     assert_eq!(
         expr,
         Expression::Gt(

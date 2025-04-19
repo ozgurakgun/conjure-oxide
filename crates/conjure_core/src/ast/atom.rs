@@ -27,6 +27,10 @@ impl Atom {
         )
     }
 
+    pub fn new_uref_with_decl(name: &str, decl: Rc<RefCell<Declaration>>) -> Atom {
+        Atom::Reference(Name::UserName(name.to_string()), decl)
+    }
+
     /// Shorthand to create an integer literal.
     pub fn new_ilit(value: i32) -> Atom {
         Atom::Literal(Literal::Int(value))
