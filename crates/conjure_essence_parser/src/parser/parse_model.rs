@@ -2,8 +2,8 @@ use std::fs;
 use std::rc::Rc;
 use std::sync::{Arc, RwLock};
 
-use conjure_core::ast::Declaration;
 use conjure_core::ast::Expression;
+use conjure_core::ast::{Declaration, SymbolTable};
 use conjure_core::context::Context;
 use conjure_core::error::Error;
 use conjure_core::metadata::Metadata;
@@ -22,15 +22,17 @@ use super::util::{get_tree, named_children};
 pub fn parse_essence_file_native(
     path: &str,
     context: Arc<RwLock<Context<'static>>>,
+    symbol_table: &SymbolTable,
 ) -> Result<Model, EssenceParseError> {
     let source_code = fs::read_to_string(path)
         .unwrap_or_else(|_| panic!("Failed to read the source code file {}", path));
-    parse_essence_with_context(&source_code, context)
+    parse_essence_with_context(&source_code, context, symbol_table)
 }
 
 pub fn parse_essence_with_context(
     src: &str,
     context: Arc<RwLock<Context<'static>>>,
+    symbol_table: &SymbolTable,
 ) -> Result<Model, EssenceParseError> {
     let (tree, source_code) = match get_tree(src) {
         Some(tree) => tree,
@@ -63,6 +65,7 @@ pub fn parse_essence_with_context(
                             constraint,
                             &source_code,
                             &statement,
+                            symbol_table,
                         )?);
                     }
                 }
@@ -77,7 +80,7 @@ pub fn parse_essence_with_context(
                 let inner = statement
                     .child(1)
                     .expect("Expected a sub-expression inside `dominanceRelation`");
-                let expr = parse_expression(inner, &source_code, &statement)?;
+                let expr = parse_expression(inner, &source_code, &statement, symbol_table)?;
                 let dominance = Expression::DominanceRelation(Metadata::new(), Box::new(expr));
                 if model.dominance.is_some() {
                     return Err(EssenceParseError::ParseError(Error::Parse(
