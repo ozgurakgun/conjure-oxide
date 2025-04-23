@@ -51,14 +51,55 @@ pub fn eval_constant(expr: &Expr) -> Option<Lit> {
                 .map(|x| x.to_literal())
                 .collect::<Option<Vec<Lit>>>()?;
 
-            let Lit::AbstractLiteral(subject @ AbstractLiteral::Matrix(_, _)) = subject else {
-                return None;
-            };
+            match subject {
+                Lit::AbstractLiteral(subject @ AbstractLiteral::Matrix(_, _)) => {
+                    matrix::flatten_enumerate(subject)
+                        .find(|(i, _)| i == &indices)
+                        .map(|(_, x)| x)
+                }
+                Lit::AbstractLiteral(subject @ AbstractLiteral::Tuple(_)) => {
+                    let AbstractLiteral::Tuple(elems) = subject else {
+                        return None;
+                    };
 
-            matrix::flatten_enumerate(subject)
-                .find(|(i, _)| i == &indices)
-                .map(|(_, x)| x)
+                    assert!(indices.len() == 1, "nested tuples not supported yet");
+
+                    let Lit::Int(index) = indices[0].clone() else {
+                        return None;
+                    };
+
+                    if elems.len() < index as usize || index < 1 {
+                        return None;
+                    }
+
+                    // -1 for 0-indexing vs 1-indexing
+                    let item = elems[index as usize - 1].clone();
+
+                    Some(item)
+                }
+                Lit::AbstractLiteral(subject @ AbstractLiteral::Record(_)) => {
+                    let AbstractLiteral::Record(elems) = subject else {
+                        return None;
+                    };
+
+                    assert!(indices.len() == 1, "nested record not supported yet");
+
+                    let Lit::Int(index) = indices[0].clone() else {
+                        return None;
+                    };
+
+                    if elems.len() < index as usize || index < 1 {
+                        return None;
+                    }
+
+                    // -1 for 0-indexing vs 1-indexing
+                    let item = elems[index as usize - 1].clone();
+                    Some(item.value)
+                }
+                _ => None,
+            }
         }
+
         Expr::UnsafeSlice(_, subject, indices) | Expr::SafeSlice(_, subject, indices) => {
             let subject: Lit = subject.as_ref().clone().to_literal()?;
             let Lit::AbstractLiteral(subject @ AbstractLiteral::Matrix(_, _)) = subject else {
@@ -138,8 +179,18 @@ pub fn eval_constant(expr: &Expr) -> Option<Lit> {
                 Some(Lit::Bool(true))
             }
         }
+        Expr::Iff(_, box1, box2) => {
+            let a: &Atom = (&**box1).try_into().ok()?;
+            let b: &Atom = (&**box2).try_into().ok()?;
+
+            let a: bool = a.try_into().ok()?;
+            let b: bool = b.try_into().ok()?;
+
+            Some(Lit::Bool(a == b))
+        }
         Expr::Sum(_, exprs) => vec_lit_op::<i32, i32>(|e| e.iter().sum(), exprs).map(Lit::Int),
         Expr::Product(_, exprs) => vec_op::<i32, i32>(|e| e.iter().product(), exprs).map(Lit::Int),
+
         Expr::FlatIneq(_, a, b, c) => {
             let a: i32 = a.try_into().ok()?;
             let b: i32 = b.try_into().ok()?;
@@ -493,21 +544,12 @@ fn unwrap_expr<T: TryFrom<Lit>>(expr: &Expr) -> Option<T> {
 #[cfg(test)]
 mod tests {
     use crate::eval_constant;
-    use conjure_core::ast::{Atom, Expression, Literal};
+    use conjure_core::ast::Expression;
+    use conjure_essence_macros::essence_expr;
 
     #[test]
     fn div_by_zero() {
-        let expr = Expression::UnsafeDiv(
-            Default::default(),
-            Box::new(Expression::Atomic(
-                Default::default(),
-                Atom::Literal(Literal::Int(1)),
-            )),
-            Box::new(Expression::Atomic(
-                Default::default(),
-                Atom::Literal(Literal::Int(0)),
-            )),
-        );
+        let expr = essence_expr!(1 / 0);
         assert_eq!(eval_constant(&expr), None);
     }
 
@@ -515,14 +557,8 @@ mod tests {
     fn safediv_by_zero() {
         let expr = Expression::SafeDiv(
             Default::default(),
-            Box::new(Expression::Atomic(
-                Default::default(),
-                Atom::Literal(Literal::Int(1)),
-            )),
-            Box::new(Expression::Atomic(
-                Default::default(),
-                Atom::Literal(Literal::Int(0)),
-            )),
+            Box::new(essence_expr!(1)),
+            Box::new(essence_expr!(0)),
         );
         assert_eq!(eval_constant(&expr), None);
     }

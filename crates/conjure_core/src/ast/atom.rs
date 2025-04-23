@@ -2,7 +2,9 @@ use std::borrow::Borrow;
 use std::cell::RefCell;
 use std::rc::Rc;
 
-use super::{AbstractLiteral, Declaration, Expression, Literal, Name};
+use super::{
+    literals::AbstractLiteral, records::RecordValue, Declaration, Expression, Literal, Name,
+};
 use serde::{Deserialize, Serialize};
 use uniplate::derive::Uniplate;
 
@@ -12,6 +14,7 @@ use uniplate::derive::Uniplate;
 #[biplate(to=Literal)]
 #[biplate(to=Expression)]
 #[biplate(to=AbstractLiteral<Literal>,walk_into=[Literal])]
+#[biplate(to=RecordValue<Literal>,walk_into=[Literal])]
 #[biplate(to=Name)]
 pub enum Atom {
     Literal(Literal),
