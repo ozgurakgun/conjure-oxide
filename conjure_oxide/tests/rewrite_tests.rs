@@ -1,6 +1,12 @@
-use conjure_core::rule_engine::{get_all_rules, rewrite_naive};
 use conjure_core::solver::SolverFamily;
+use std::collections::VecDeque;
+use std::process::exit;
+use std::rc::Rc;
+
+use conjure_core::rule_engine::get_all_rules;
+use conjure_core::rule_engine::rewrite_naive;
 use conjure_core::{into_matrix_expr, matrix_expr};
+use conjure_oxide::SolverFamily;
 use conjure_oxide::{
     ast::*,
     get_rule_by_name,
