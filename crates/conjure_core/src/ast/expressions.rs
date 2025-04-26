@@ -840,12 +840,6 @@ impl From<Atom> for Expression {
     }
 }
 
-impl From<Name> for Expression {
-    fn from(name: Name) -> Self {
-        Expression::Atomic(Metadata::new(), Atom::Reference(name))
-    }
-}
-
 impl From<Box<Expression>> for Expression {
     fn from(val: Box<Expression>) -> Self {
         val.as_ref().clone()
@@ -1100,7 +1094,7 @@ impl Typeable for Expression {
             // handles integers, booleans and abstract literals all at once, since typeable defined for literal
             Expression::Atomic(_, Atom::Literal(lit)) => lit.return_type(),
             // TODO - access symbol table to get return type of references - define inside Atom instead
-            Expression::Atomic(_, Atom::Reference(_)) => None,
+            Expression::Atomic(_, Atom::Reference(_, _)) => None,
             Expression::Scope(_, scope) => scope.return_type(),
             Expression::Abs(_, _) => Some(ReturnType::Int),
             Expression::Sum(_, _) => Some(ReturnType::Int),

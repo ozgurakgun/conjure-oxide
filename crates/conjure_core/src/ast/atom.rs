@@ -3,8 +3,8 @@ use std::cell::RefCell;
 use std::rc::Rc;
 
 use super::{
-    literals::AbstractLiteral, records::RecordValue, Expression, Literal, Name, ReturnType,
-    Typeable,
+    literals::AbstractLiteral, records::RecordValue, Declaration, Expression, Literal, Name,
+    ReturnType, Typeable,
 };
 use serde::{Deserialize, Serialize};
 use uniplate::derive::Uniplate;
@@ -51,7 +51,7 @@ impl Typeable for Atom {
         match self {
             Atom::Literal(lit) => lit.return_type(),
             //TODO: access symbol table to get return type of references
-            Atom::Reference(_) => None,
+            Atom::Reference(_, _) => None,
         }
     }
 }
