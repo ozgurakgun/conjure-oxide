@@ -201,7 +201,6 @@ pub fn parse_expression(
                 EssenceParseError::from(format!("Variable '{}' not found in scope", variable_name))
             })?;
 
-            let declaration_rc = Rc::new(RefCell::new((*declaration_rc).clone()));
             Ok(Expression::Atomic(
                 Metadata::new(),
                 Atom::Reference(Name::UserName(variable_name), declaration_rc),

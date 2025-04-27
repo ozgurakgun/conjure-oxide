@@ -143,7 +143,7 @@ impl SubModel {
     /// Adds a new symbol to the symbol table
     /// (Wrapper over `SymbolTable.insert`)
     pub fn add_symbol(&mut self, sym: Declaration) -> Option<()> {
-        self.symbols_mut().insert(Rc::new(sym))
+        self.symbols_mut().insert(Rc::new(RefCell::new(sym)))
     }
 }
 
@@ -157,7 +157,7 @@ impl Display for SubModel {
     #[allow(clippy::unwrap_used)] // [rustdocs]: should only fail iff the formatter fails
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         for (name, decl) in self.symbols().clone().into_iter_local() {
-            match decl.kind() {
+            match decl.borrow().kind() {
                 DeclarationKind::DecisionVariable(_) => {
                     writeln!(
                         f,

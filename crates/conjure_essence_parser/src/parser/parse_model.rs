@@ -1,3 +1,4 @@
+use std::cell::RefCell;
 use std::fs;
 use std::rc::Rc;
 use std::sync::{Arc, RwLock};
@@ -54,7 +55,10 @@ pub fn parse_essence_with_context(
                     model
                         .as_submodel_mut()
                         .symbols_mut()
-                        .insert(Rc::new(Declaration::new_var(name, decision_variable)));
+                        .insert(Rc::new(RefCell::new(Declaration::new_var(
+                            name,
+                            decision_variable,
+                        ))));
                 }
             }
             "constraint_list" => {

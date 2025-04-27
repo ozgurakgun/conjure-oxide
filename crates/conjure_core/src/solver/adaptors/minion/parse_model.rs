@@ -39,7 +39,8 @@ fn load_symbol_table(
                 .symbols()
                 .lookup(name)
                 .expect("search var should exist");
-            let var = decl.as_var().expect("search var should be a var");
+            let decl_borrow = decl.borrow();
+            let var = decl_borrow.as_var().expect("search var should be a var");
 
             load_var(name, var, true, minion_model)?;
         }
@@ -56,7 +57,8 @@ fn load_symbol_table(
                 continue;
             };
 
-            let Some(var) = decl.as_var() else {
+            let decl_borrow = decl.borrow();
+            let Some(var) = decl_borrow.as_var() else {
                 continue;
             }; // ignore lettings, etc.
                //
@@ -80,7 +82,8 @@ fn load_symbol_table(
             .clone()
             .into_iter_local()
         {
-            let Some(var) = decl.as_var() else {
+            let decl_borrow = decl.borrow();
+            let Some(var) = decl_borrow.as_var() else {
                 continue;
             }; // ignore lettings, etc.
                //

@@ -53,40 +53,33 @@ mod test {
     pub fn test_parse_expressions() {
         let src = "x >= 5, y = a / 2";
         let mut symbols = SymbolTable::new();
-        let x: Rc<Declaration> = Rc::new(Declaration::new_var(
+        let x: Rc<RefCell<Declaration>> = Rc::new(RefCell::new(Declaration::new_var(
             Name::UserName("x".into()),
-            Domain::BoolDomain,
-        ));
-        let x_refcell = Rc::new(RefCell::new(Declaration::new_var(
-            Name::UserName("x".into()),
-            Domain::BoolDomain,
+            Domain::BoolDomain, // Assuming IntDomain was intended based on comparison? Check this.
+                                // If x is compared with 5, it should probably be IntDomain.
         )));
-        let y: Rc<Declaration> = Rc::new(Declaration::new_var(
-            Name::UserName("y".into()),
-            Domain::IntDomain(vec![conjure_core::ast::Range::Bounded(0, 10)]),
-        ));
-        let y_refcell = Rc::new(RefCell::new(Declaration::new_var(
+
+        let y: Rc<RefCell<Declaration>> = Rc::new(RefCell::new(Declaration::new_var(
             Name::UserName("y".into()),
             Domain::IntDomain(vec![conjure_core::ast::Range::Bounded(0, 10)]),
         )));
-        let a: Rc<Declaration> = Rc::new(Declaration::new_var(
-            Name::UserName("a".into()),
-            Domain::IntDomain(vec![conjure_core::ast::Range::Bounded(0, 10)]),
-        ));
-        let a_refcell = Rc::new(RefCell::new(Declaration::new_var(
+
+        let a: Rc<RefCell<Declaration>> = Rc::new(RefCell::new(Declaration::new_var(
             Name::UserName("a".into()),
             Domain::IntDomain(vec![conjure_core::ast::Range::Bounded(0, 10)]),
         )));
+
+        // Clone the Rc when inserting!
         symbols
-            .insert(x)
+            .insert(x.clone())
             .expect("x should not exist in the symbol-table yet, so we should be able to add it");
 
         symbols
-            .insert(y)
+            .insert(y.clone())
             .expect("y should not exist in the symbol-table yet, so we should be able to add it");
 
         symbols
-            .insert(a)
+            .insert(a.clone())
             .expect("a should not exist in the symbol-table yet, so we should be able to add it");
 
         let exprs = parse_exprs(src, &symbols).unwrap();
@@ -97,7 +90,7 @@ mod test {
                 Metadata::new(),
                 Box::new(Expression::Atomic(
                     Metadata::new(),
-                    Atom::new_uref_with_decl("x", x_refcell)
+                    Atom::new_uref_with_decl("x", x.clone()) // Clone again for the assertion if needed by Atom
                 )),
                 Box::new(Expression::Atomic(Metadata::new(), 5.into()))
             )
@@ -108,13 +101,13 @@ mod test {
                 Metadata::new(),
                 Box::new(Expression::Atomic(
                     Metadata::new(),
-                    Atom::new_uref_with_decl("y", y_refcell)
+                    Atom::new_uref_with_decl("y", y.clone()) // Clone again for the assertion if needed by Atom
                 )),
                 Box::new(Expression::UnsafeDiv(
                     Metadata::new(),
                     Box::new(Expression::Atomic(
                         Metadata::new(),
-                        Atom::new_uref_with_decl("a", a_refcell)
+                        Atom::new_uref_with_decl("a", a.clone()) // Clone again for the assertion if needed by Atom
                     )),
                     Box::new(Expression::Atomic(Metadata::new(), 2.into()))
                 ))
