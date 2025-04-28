@@ -22,7 +22,8 @@ fn index_record_to_atom(expr: &Expr, symbols: &SymbolTable) -> ApplicationResult
         return Err(RuleNotApplicable);
     };
 
-    let Expr::Atomic(_, Atom::Reference(Name::WithRepresentation(name, reprs), decl)) = &**subject else {
+    let Expr::Atomic(_, Atom::Reference(Name::WithRepresentation(name, reprs), decl)) = &**subject
+    else {
         return Err(RuleNotApplicable);
     };
 
@@ -42,7 +43,8 @@ fn index_record_to_atom(expr: &Expr, symbols: &SymbolTable) -> ApplicationResult
 
     // let decl = symbols.lookup(name).unwrap();
 
-    let Some(Domain::DomainRecord(_)) = decl.borrow().domain().cloned().map(|x| x.resolve(symbols)) else {
+    let Some(Domain::DomainRecord(_)) = decl.borrow().domain().cloned().map(|x| x.resolve(symbols))
+    else {
         return Err(RuleNotApplicable);
     };
 
@@ -74,7 +76,8 @@ fn record_index_to_bubble(expr: &Expr, symbols: &SymbolTable) -> ApplicationResu
         return Err(RuleNotApplicable);
     };
 
-    let Expr::Atomic(_, Atom::Reference(Name::WithRepresentation(_, reprs), _decl)) = &**subject else {
+    let Expr::Atomic(_, Atom::Reference(Name::WithRepresentation(_, reprs), _decl)) = &**subject
+    else {
         return Err(RuleNotApplicable);
     };
 
@@ -153,11 +156,13 @@ fn record_equality(expr: &Expr, symbols: &SymbolTable) -> ApplicationResult {
     };
 
     // check if both sides are record variables
-    let Expr::Atomic(_, Atom::Reference(Name::WithRepresentation(name, reprs), decl)) = &**left else {
+    let Expr::Atomic(_, Atom::Reference(Name::WithRepresentation(name, reprs), decl)) = &**left
+    else {
         return Err(RuleNotApplicable);
     };
 
-    let Expr::Atomic(_, Atom::Reference(Name::WithRepresentation(name2, reprs2), decl2)) = &**right else {
+    let Expr::Atomic(_, Atom::Reference(Name::WithRepresentation(name2, reprs2), decl2)) = &**right
+    else {
         return Err(RuleNotApplicable);
     };
 
@@ -252,7 +257,8 @@ fn record_to_const(expr: &Expr, symbols: &SymbolTable) -> ApplicationResult {
         return Err(RuleNotApplicable);
     };
 
-    let Expr::Atomic(_, Atom::Reference(Name::WithRepresentation(name, reprs), decl)) = &**left else {
+    let Expr::Atomic(_, Atom::Reference(Name::WithRepresentation(name, reprs), decl)) = &**left
+    else {
         return Err(RuleNotApplicable);
     };
 

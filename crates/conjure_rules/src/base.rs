@@ -111,7 +111,10 @@ fn min_to_var(expr: &Expr, symbols: &SymbolTable) -> ApplicationResult {
     let domain = expr
         .domain_of(&symbols)
         .ok_or(ApplicationError::DomainError)?;
-    symbols.insert(Rc::new(RefCell::new(Declaration::new_var(new_name.clone(), domain))));
+    symbols.insert(Rc::new(RefCell::new(Declaration::new_var(
+        new_name.clone(),
+        domain,
+    ))));
 
     Ok(Reduction::new(essence_expr!(&new_name), new_top, symbols))
 }
@@ -150,7 +153,10 @@ fn max_to_var(expr: &Expr, symbols: &SymbolTable) -> ApplicationResult {
     let domain = expr
         .domain_of(&symbols)
         .ok_or(ApplicationError::DomainError)?;
-    symbols.insert(Rc::new(RefCell::new(Declaration::new_var(new_name.clone(), domain))));
+    symbols.insert(Rc::new(RefCell::new(Declaration::new_var(
+        new_name.clone(),
+        domain,
+    ))));
 
     Ok(Reduction::new(essence_expr!(&new_name), new_top, symbols))
 }

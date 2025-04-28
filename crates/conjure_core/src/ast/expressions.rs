@@ -15,7 +15,6 @@ use crate::metadata::Metadata;
 use enum_compatability_macro::document_compatibility;
 use itertools::Itertools;
 use serde::{Deserialize, Serialize};
-use std::cell::RefCell;
 use uniplate::derive::Uniplate;
 use uniplate::{Biplate, Uniplate as _};
 
@@ -1152,6 +1151,7 @@ impl Typeable for Expression {
 
 #[cfg(test)]
 mod tests {
+    use std::cell::RefCell;
     use std::rc::Rc;
 
     use crate::{ast::declaration::Declaration, matrix_expr};

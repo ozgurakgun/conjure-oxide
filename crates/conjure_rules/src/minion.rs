@@ -109,7 +109,10 @@ fn introduce_producteq(expr: &Expr, symbols: &SymbolTable) -> ApplicationResult 
             .domain_of(&symbols)
             .ok_or(ApplicationError::DomainError)?;
 
-        symbols.insert(Rc::new(RefCell::new(Declaration::new_var(aux_var.clone(), aux_domain))));
+        symbols.insert(Rc::new(RefCell::new(Declaration::new_var(
+            aux_var.clone(),
+            aux_domain,
+        ))));
 
         let new_top_expr =
             Expr::FlatProductEq(Metadata::new(), y, next_factor_atom, aux_var.clone().into());

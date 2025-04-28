@@ -88,7 +88,10 @@ pub fn to_aux_var(expr: &Expr, symbols: &SymbolTable) -> Option<ToAuxVarOutput> 
         return None;
     };
 
-    symbols.insert(Rc::new(RefCell::new(Declaration::new_var(name.clone(), domain.clone()))))?;
+    symbols.insert(Rc::new(RefCell::new(Declaration::new_var(
+        name.clone(),
+        domain.clone(),
+    ))))?;
     Some(ToAuxVarOutput {
         aux_name: name.clone(),
         aux_decl: Expr::AuxDeclaration(Metadata::new(), name, Box::new(expr.clone())),

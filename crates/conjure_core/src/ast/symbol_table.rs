@@ -7,7 +7,6 @@ use crate::representation::{get_repr_rule, Representation};
 
 use super::comprehension::Comprehension;
 use super::serde::{RcRefCellAsId, RcRefCellAsInner};
-use core::borrow;
 use std::cell::RefCell;
 use std::collections::btree_map::Entry;
 use std::collections::BTreeSet;

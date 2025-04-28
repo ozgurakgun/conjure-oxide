@@ -1,18 +1,12 @@
-use conjure_core::solver::SolverFamily;
-use std::collections::VecDeque;
-use std::process::exit;
-use std::rc::Rc;
-
 use conjure_core::rule_engine::get_all_rules;
 use conjure_core::rule_engine::rewrite_naive;
 use conjure_core::{into_matrix_expr, matrix_expr};
-use conjure_oxide::SolverFamily;
 use conjure_oxide::{
     ast::*,
     get_rule_by_name,
     rule_engine::resolve_rule_sets,
     solver::{adaptors, Solver},
-    Metadata, Model, Rule,
+    Metadata, Model, Rule, SolverFamily,
 };
 use conjure_rules::eval_constant;
 use std::cell::RefCell;
@@ -381,26 +375,26 @@ fn reduce_solve_xyz() {
     model
         .as_submodel_mut()
         .symbols_mut()
-        .insert(Rc::new(Declaration::new_var(
+        .insert(Rc::new(RefCell::new(Declaration::new_var(
             Name::UserName(String::from("a")),
             Domain::IntDomain(vec![Range::Bounded(1, 3)]),
-        )))
+        ))))
         .unwrap();
     model
         .as_submodel_mut()
         .symbols_mut()
-        .insert(Rc::new(Declaration::new_var(
+        .insert(Rc::new(RefCell::new(Declaration::new_var(
             Name::UserName(String::from("b")),
             Domain::IntDomain(vec![Range::Bounded(1, 3)]),
-        )))
+        ))))
         .unwrap();
     model
         .as_submodel_mut()
         .symbols_mut()
-        .insert(Rc::new(Declaration::new_var(
+        .insert(Rc::new(RefCell::new(Declaration::new_var(
             Name::UserName(String::from("c")),
             Domain::IntDomain(vec![Range::Bounded(1, 3)]),
-        )))
+        ))))
         .unwrap();
 
     let solver: Solver<adaptors::Minion> = Solver::new(adaptors::Minion::new());
@@ -812,26 +806,26 @@ fn rewrite_solve_xyz() {
     model
         .as_submodel_mut()
         .symbols_mut()
-        .insert(Rc::new(Declaration::new_var(
+        .insert(Rc::new(RefCell::new(Declaration::new_var(
             var_name_from_atom(&variable_a.clone()),
             domain.clone(),
-        )))
+        ))))
         .unwrap();
     model
         .as_submodel_mut()
         .symbols_mut()
-        .insert(Rc::new(Declaration::new_var(
+        .insert(Rc::new(RefCell::new(Declaration::new_var(
             var_name_from_atom(&variable_b.clone()),
             domain.clone(),
-        )))
+        ))))
         .unwrap();
     model
         .as_submodel_mut()
         .symbols_mut()
-        .insert(Rc::new(Declaration::new_var(
+        .insert(Rc::new(RefCell::new(Declaration::new_var(
             var_name_from_atom(&variable_c.clone()),
             domain.clone(),
-        )))
+        ))))
         .unwrap();
 
     let solver: Solver<adaptors::Minion> = Solver::new(adaptors::Minion::new());
