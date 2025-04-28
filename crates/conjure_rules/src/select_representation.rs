@@ -23,6 +23,7 @@ fn select_representation(expr: &Expr, symbols: &SymbolTable) -> ApplicationResul
     symbols
         .lookup(name)
         .ok_or(RuleNotApplicable)?
+        .borrow()
         .as_var()
         .ok_or(RuleNotApplicable)?;
 

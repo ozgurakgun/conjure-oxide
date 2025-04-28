@@ -145,8 +145,7 @@ pub(crate) fn parse(
     context: Arc<RwLock<Context<'static>>>,
 ) -> anyhow::Result<Model> {
     let input_file: String = context
-        .read()
-        .unwrap()
+        .read()?
         .file_name
         .clone()
         .expect("context should contain the input file");

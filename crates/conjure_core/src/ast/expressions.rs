@@ -846,6 +846,12 @@ impl From<Box<Expression>> for Expression {
     }
 }
 
+impl From<Name> for Expression {
+    fn from(value: Name) -> Self {
+        Expression::Atomic(Metadata::new(), value.into())
+    }
+}
+
 impl Display for Expression {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
         match &self {
@@ -1193,10 +1199,10 @@ mod tests {
             ),
         );
         let mut vars = SymbolTable::new();
-        vars.insert(Rc::new(Declaration::new_var(
+        vars.insert(Rc::new(RefCell::new(Declaration::new_var(
             Name::MachineName(0),
             Domain::IntDomain(vec![Range::Single(1)]),
-        )))
+        ))))
         .unwrap();
         assert_eq!(
             reference.domain_of(&vars),
@@ -1226,10 +1232,10 @@ mod tests {
             ),
         );
         let mut vars = SymbolTable::new();
-        vars.insert(Rc::new(Declaration::new_var(
+        vars.insert(Rc::new(RefCell::new(Declaration::new_var(
             Name::MachineName(0),
             Domain::IntDomain(vec![Range::Single(1)]),
-        )))
+        ))))
         .unwrap();
         let sum = Expression::Sum(
             Metadata::new(),
@@ -1251,10 +1257,10 @@ mod tests {
             ),
         );
         let mut vars = SymbolTable::new();
-        vars.insert(Rc::new(Declaration::new_var(
+        vars.insert(Rc::new(RefCell::new(Declaration::new_var(
             Name::MachineName(0),
             Domain::IntDomain(vec![Range::Bounded(1, 2)]),
-        )));
+        ))));
         let sum = Expression::Sum(
             Metadata::new(),
             Box::new(matrix_expr![reference.clone(), reference.clone()]),
