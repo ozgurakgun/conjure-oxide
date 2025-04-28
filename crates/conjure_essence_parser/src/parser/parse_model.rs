@@ -23,17 +23,15 @@ use super::util::{get_tree, named_children};
 pub fn parse_essence_file_native(
     path: &str,
     context: Arc<RwLock<Context<'static>>>,
-    symbol_table: &SymbolTable,
 ) -> Result<Model, EssenceParseError> {
     let source_code = fs::read_to_string(path)
         .unwrap_or_else(|_| panic!("Failed to read the source code file {}", path));
-    parse_essence_with_context(&source_code, context, symbol_table)
+    parse_essence_with_context(&source_code, context)
 }
 
 pub fn parse_essence_with_context(
     src: &str,
     context: Arc<RwLock<Context<'static>>>,
-    symbol_table: &SymbolTable,
 ) -> Result<Model, EssenceParseError> {
     let (tree, source_code) = match get_tree(src) {
         Some(tree) => tree,
@@ -45,6 +43,7 @@ pub fn parse_essence_with_context(
     };
 
     let mut model = Model::new(context);
+    let symbols = model.as_submodel().symbols().clone();
     let root_node = tree.root_node();
     for statement in named_children(&root_node) {
         match statement.kind() {
@@ -69,7 +68,7 @@ pub fn parse_essence_with_context(
                             constraint,
                             &source_code,
                             &statement,
-                            symbol_table,
+                            &symbols,
                         )?);
                     }
                 }
@@ -84,7 +83,7 @@ pub fn parse_essence_with_context(
                 let inner = statement
                     .child(1)
                     .expect("Expected a sub-expression inside `dominanceRelation`");
-                let expr = parse_expression(inner, &source_code, &statement, symbol_table)?;
+                let expr = parse_expression(inner, &source_code, &statement, &symbols)?;
                 let dominance = Expression::DominanceRelation(Metadata::new(), Box::new(expr));
                 if model.dominance.is_some() {
                     return Err(EssenceParseError::ParseError(Error::Parse(
