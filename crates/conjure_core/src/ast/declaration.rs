@@ -8,7 +8,7 @@ use uniplate::{Biplate, Tree};
 use super::name::Name;
 use super::serde::{DefaultWithId, HasId, ObjId};
 use super::types::Typeable;
-use super::{DecisionVariable, Domain, Expression, ReturnType};
+use super::{Atom, DecisionVariable, Domain, Expression, ReturnType};
 
 static ID_COUNTER: AtomicU32 = AtomicU32::new(0);
 

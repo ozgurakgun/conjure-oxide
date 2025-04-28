@@ -220,10 +220,10 @@ impl SymbolTable {
     }
 
     /// Returns an arbitrary variable name that is not in the symbol table.
-    pub fn gensym(&self) -> Name {
+    pub fn gensym(&self, domain: &Domain) -> Declaration {
         let num = *self.next_machine_name.borrow();
         *(self.next_machine_name.borrow_mut()) += 1;
-        Name::MachineName(num) // incremented when inserted
+        Declaration::new_var(Name::MachineName(num), domain.clone())
     }
 
     /// Gets the parent of this symbol table as a mutable reference.

@@ -42,11 +42,9 @@ fn select_representation(expr: &Expr, symbols: &SymbolTable) -> ApplicationResul
 
     let new_name = Name::WithRepresentation(Box::new(name.clone()), representation_names);
 
+    let decl = symbols.lookup(name).unwrap();
     Ok(Reduction::with_symbols(
-        Expr::Atomic(
-            Metadata::new(),
-            Atom::Reference(new_name, Rc::new(RefCell::new(Declaration::default()))),
-        ),
+        Expr::Atomic(Metadata::new(), Atom::Reference(new_name, decl.clone())),
         symbols,
     ))
 }

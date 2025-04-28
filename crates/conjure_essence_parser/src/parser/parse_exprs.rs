@@ -90,7 +90,7 @@ mod test {
                 Metadata::new(),
                 Box::new(Expression::Atomic(
                     Metadata::new(),
-                    Atom::new_uref_with_decl("x", x.clone()) // Clone again for the assertion if needed by Atom
+                    Atom::new_ref(&*x.borrow()) // Borrow returns Ref, deref it and take a reference
                 )),
                 Box::new(Expression::Atomic(Metadata::new(), 5.into()))
             )
@@ -101,13 +101,13 @@ mod test {
                 Metadata::new(),
                 Box::new(Expression::Atomic(
                     Metadata::new(),
-                    Atom::new_uref_with_decl("y", y.clone()) // Clone again for the assertion if needed by Atom
+                    Atom::new_ref(&*y.borrow()) // Borrow returns Ref, deref it and take a reference
                 )),
                 Box::new(Expression::UnsafeDiv(
                     Metadata::new(),
                     Box::new(Expression::Atomic(
                         Metadata::new(),
-                        Atom::new_uref_with_decl("a", a.clone()) // Clone again for the assertion if needed by Atom
+                        Atom::new_ref(&*a.borrow()) // Borrow returns Ref, deref it and take a reference
                     )),
                     Box::new(Expression::Atomic(Metadata::new(), 2.into()))
                 ))

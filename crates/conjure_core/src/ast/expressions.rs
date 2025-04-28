@@ -845,12 +845,6 @@ impl From<Box<Expression>> for Expression {
     }
 }
 
-impl From<Name> for Expression {
-    fn from(value: Name) -> Self {
-        Expression::Atomic(Metadata::new(), value.into())
-    }
-}
-
 impl Display for Expression {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
         match &self {

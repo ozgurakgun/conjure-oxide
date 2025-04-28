@@ -23,16 +23,15 @@ pub enum Atom {
 }
 
 impl Atom {
-    /// Shorthand to create a reference by user name.
-    pub fn new_uref(name: &str) -> Atom {
-        Atom::Reference(
-            Name::UserName(name.to_string()),
-            Rc::new(RefCell::new(Declaration::default())),
-        )
+    pub fn new_ref(decl: &Declaration) -> Atom {
+        Atom::Reference(decl.name().clone(), Rc::new(RefCell::new(decl.clone())))
     }
 
-    pub fn new_uref_with_decl(name: &str, decl: Rc<RefCell<Declaration>>) -> Atom {
-        Atom::Reference(Name::UserName(name.to_string()), decl)
+    pub fn into_declaration(self) -> Rc<RefCell<Declaration>> {
+        match self {
+            Atom::Reference(_, decl) => decl.clone(),
+            _ => panic!("Called into_declaration on a non-reference Atom"),
+        }
     }
 
     /// Shorthand to create an integer literal.
@@ -71,12 +70,6 @@ impl From<Literal> for Atom {
     }
 }
 
-impl From<Name> for Atom {
-    fn from(value: Name) -> Self {
-        Atom::Reference(value, Rc::new(RefCell::new(Declaration::default())))
-    }
-}
-
 impl From<(Name, Rc<RefCell<Declaration>>)> for Atom {
     fn from((name, decl): (Name, Rc<RefCell<Declaration>>)) -> Self {
         Atom::Reference(name, decl)
@@ -92,6 +85,17 @@ impl From<i32> for Atom {
 impl From<bool> for Atom {
     fn from(value: bool) -> Self {
         Atom::Literal(value.into())
+    }
+}
+
+impl From<Declaration> for Atom {
+    fn from(decl: Declaration) -> Self {
+        // Clone the name from the declaration
+        let name = decl.name().clone();
+        // Wrap the declaration in Rc<RefCell<>>
+        let decl_rc = Rc::new(RefCell::new(decl));
+        // Create the Atom::Reference
+        Atom::Reference(name, decl_rc)
     }
 }
 
