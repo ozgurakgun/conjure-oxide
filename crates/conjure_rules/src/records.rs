@@ -156,12 +156,11 @@ fn record_equality(expr: &Expr, symbols: &SymbolTable) -> ApplicationResult {
     };
 
     // check if both sides are record variables
-    let Expr::Atomic(_, Atom::Reference(Name::WithRepresentation(name, reprs), decl)) = &**left
-    else {
+    let Expr::Atomic(_, Atom::Reference(Name::WithRepresentation(_, reprs), decl)) = &**left else {
         return Err(RuleNotApplicable);
     };
 
-    let Expr::Atomic(_, Atom::Reference(Name::WithRepresentation(name2, reprs2), decl2)) = &**right
+    let Expr::Atomic(_, Atom::Reference(Name::WithRepresentation(_, reprs2), decl2)) = &**right
     else {
         return Err(RuleNotApplicable);
     };
@@ -257,8 +256,7 @@ fn record_to_const(expr: &Expr, symbols: &SymbolTable) -> ApplicationResult {
         return Err(RuleNotApplicable);
     };
 
-    let Expr::Atomic(_, Atom::Reference(Name::WithRepresentation(name, reprs), decl)) = &**left
-    else {
+    let Expr::Atomic(_, Atom::Reference(Name::WithRepresentation(_, reprs), decl)) = &**left else {
         return Err(RuleNotApplicable);
     };
 

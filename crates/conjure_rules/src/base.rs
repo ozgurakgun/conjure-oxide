@@ -1,7 +1,5 @@
-use std::rc::Rc;
-
 use conjure_core::{
-    ast::{Atom, Declaration, Domain, Expression as Expr, SymbolTable},
+    ast::{Atom, Expression as Expr, SymbolTable},
     into_matrix_expr,
     metadata::Metadata,
     rule_engine::{
@@ -9,7 +7,6 @@ use conjure_core::{
     },
 };
 use conjure_essence_macros::essence_expr;
-use std::cell::RefCell;
 use uniplate::Uniplate;
 
 use ApplicationError::RuleNotApplicable;

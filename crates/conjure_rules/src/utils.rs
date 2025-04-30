@@ -1,7 +1,7 @@
 use std::{cell::RefCell, rc::Rc};
 
 use conjure_core::{
-    ast::{Atom, Declaration, Domain, Expression as Expr, Name, SymbolTable},
+    ast::{Atom, Domain, Expression as Expr, Name, SymbolTable},
     metadata::Metadata,
 };
 

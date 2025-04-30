@@ -1,5 +1,5 @@
 use crate::errors::EssenceParseError;
-use conjure_core::ast::{Expression, Range, SymbolTable};
+use conjure_core::ast::{Expression, SymbolTable};
 use conjure_core::error::Error;
 #[allow(unused)]
 use uniplate::Uniplate;
@@ -55,8 +55,7 @@ mod test {
         let mut symbols = SymbolTable::new();
         let x: Rc<RefCell<Declaration>> = Rc::new(RefCell::new(Declaration::new_var(
             Name::UserName("x".into()),
-            Domain::BoolDomain, // Assuming IntDomain was intended based on comparison? Check this.
-                                // If x is compared with 5, it should probably be IntDomain.
+            Domain::IntDomain(vec![conjure_core::ast::Range::Bounded(0, 10)]),
         )));
 
         let y: Rc<RefCell<Declaration>> = Rc::new(RefCell::new(Declaration::new_var(
@@ -84,30 +83,32 @@ mod test {
 
         let exprs = parse_exprs(src, &symbols).unwrap();
         assert_eq!(exprs.len(), 2);
+
         assert_eq!(
             exprs[0],
             Expression::Geq(
                 Metadata::new(),
                 Box::new(Expression::Atomic(
                     Metadata::new(),
-                    Atom::new_ref(&*x.borrow()) // Borrow returns Ref, deref it and take a reference
+                    Atom::new_ref(&*x.borrow())
                 )),
                 Box::new(Expression::Atomic(Metadata::new(), 5.into()))
             )
         );
+
         assert_eq!(
             exprs[1],
             Expression::Eq(
                 Metadata::new(),
                 Box::new(Expression::Atomic(
                     Metadata::new(),
-                    Atom::new_ref(&*y.borrow()) // Borrow returns Ref, deref it and take a reference
+                    Atom::new_ref(&*y.borrow())
                 )),
                 Box::new(Expression::UnsafeDiv(
                     Metadata::new(),
                     Box::new(Expression::Atomic(
                         Metadata::new(),
-                        Atom::new_ref(&*a.borrow()) // Borrow returns Ref, deref it and take a reference
+                        Atom::new_ref(&*a.borrow())
                     )),
                     Box::new(Expression::Atomic(Metadata::new(), 2.into()))
                 ))

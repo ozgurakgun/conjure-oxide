@@ -3,8 +3,8 @@ use std::fs;
 use std::rc::Rc;
 use std::sync::{Arc, RwLock};
 
+use conjure_core::ast::Declaration;
 use conjure_core::ast::Expression;
-use conjure_core::ast::{Declaration, SymbolTable};
 use conjure_core::context::Context;
 use conjure_core::error::Error;
 use conjure_core::metadata::Metadata;

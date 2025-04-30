@@ -8,8 +8,6 @@ use conjure_core::{into_matrix_expr, matrix_expr};
 use crate::errors::EssenceParseError;
 
 use super::util::named_children;
-use std::cell::RefCell;
-use std::rc::Rc;
 
 /// Parse an Essence expression into its Conjure AST representation.
 pub fn parse_expression(

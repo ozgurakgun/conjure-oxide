@@ -1,5 +1,3 @@
-use std::rc::Rc;
-
 use conjure_rule_macros::register_rule;
 
 use conjure_core::{
@@ -16,8 +14,8 @@ use conjure_core::{
 /// Otherwise, the letting may be put into a flat constraint, as it is a reference. At this point
 /// it ceases to be an expression, so we cannot match over it.
 #[register_rule(("Base", 5000))]
-fn substitute_value_lettings(expr: &Expr, symbols: &SymbolTable) -> ApplicationResult {
-    let Expr::Atomic(_, Atom::Reference(name, decl)) = expr else {
+fn substitute_value_lettings(expr: &Expr, _: &SymbolTable) -> ApplicationResult {
+    let Expr::Atomic(_, Atom::Reference(_, decl)) = expr else {
         return Err(RuleNotApplicable);
     };
 
@@ -37,7 +35,7 @@ fn substitute_domain_lettings(expr: &Expr, symbols: &SymbolTable) -> Application
     let mut new_symbols = symbols.clone();
     let mut has_changed = false;
 
-    for (_, mut decl) in symbols.clone().into_iter_local() {
+    for (_, decl) in symbols.clone().into_iter_local() {
         let Some(mut var) = decl.borrow().as_var().cloned() else {
             continue;
         };

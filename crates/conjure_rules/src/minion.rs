@@ -1,9 +1,7 @@
 /************************************************************************/
 /*        Rules for translating to Minion-supported constraints         */
 /************************************************************************/
-
-use std::rc::Rc;
-use std::{cell::RefCell, convert::TryInto};
+use std::{cell::RefCell, convert::TryInto, rc::Rc};
 
 use crate::{
     extra_check,
@@ -114,9 +112,9 @@ fn introduce_producteq(expr: &Expr, symbols: &SymbolTable) -> ApplicationResult 
         let aux_var = symbols.gensym(domain);
         // TODO: find this domain without having to make unnecessary Expr and Metadata objects
         // Just using the domain of expr doesn't work
-        let aux_domain = Expr::Product(Metadata::new(), vec![y.clone().into(), next_factor])
-            .domain_of(&symbols)
-            .ok_or(ApplicationError::DomainError)?;
+        // let aux_domain = Expr::Product(Metadata::new(), vec![y.clone().into(), next_factor])
+        //     .domain_of(&symbols)
+        //     .ok_or(ApplicationError::DomainError)?;
 
         symbols.insert(declaration);
 
@@ -543,8 +541,8 @@ fn introduce_abseq(expr: &Expr, symbol_table: &SymbolTable) -> ApplicationResult
         }
 
         Expr::AuxDeclaration(_, a, b) => {
-            let decl = symbol_table.lookup(&a).ok_or(RuleNotApplicable)?;
-            let a = Atom::Reference(a, decl.clone());
+            let decl_rc = symbol_table.lookup(&a).ok_or(RuleNotApplicable)?;
+            let a = Atom::Reference(a.clone(), decl_rc.clone());
             Ok((a, *b))
         }
 

@@ -137,12 +137,11 @@ fn tuple_equality(expr: &Expr, symbols: &SymbolTable) -> ApplicationResult {
         return Err(RuleNotApplicable);
     };
 
-    let Expr::Atomic(_, Atom::Reference(Name::WithRepresentation(name, reprs), decl)) = &**left
-    else {
+    let Expr::Atomic(_, Atom::Reference(Name::WithRepresentation(_, reprs), decl)) = &**left else {
         return Err(RuleNotApplicable);
     };
 
-    let Expr::Atomic(_, Atom::Reference(Name::WithRepresentation(name2, reprs2), decl2)) = &**right
+    let Expr::Atomic(_, Atom::Reference(Name::WithRepresentation(_, reprs2), decl2)) = &**right
     else {
         return Err(RuleNotApplicable);
     };
@@ -238,7 +237,6 @@ fn tuple_to_constant(expr: &Expr, symbols: &SymbolTable) -> ApplicationResult {
     }
 
     let decl = symbols.lookup(name).unwrap();
-    let decl_borrowed = decl.borrow();
 
     let domain = decl
         .borrow()
@@ -296,13 +294,11 @@ fn tuple_inequality(expr: &Expr, symbols: &SymbolTable) -> ApplicationResult {
         return Err(RuleNotApplicable);
     };
 
-    let Expr::Atomic(_, Atom::Reference(Name::WithRepresentation(name, reprs), _decl)) = &**left
-    else {
+    let Expr::Atomic(_, Atom::Reference(Name::WithRepresentation(_, reprs), decl)) = &**left else {
         return Err(RuleNotApplicable);
     };
 
-    let Expr::Atomic(_, Atom::Reference(Name::WithRepresentation(name2, reprs2), _decl2)) =
-        &**right
+    let Expr::Atomic(_, Atom::Reference(Name::WithRepresentation(_, reprs2), decl2)) = &**right
     else {
         return Err(RuleNotApplicable);
     };
@@ -314,11 +310,6 @@ fn tuple_inequality(expr: &Expr, symbols: &SymbolTable) -> ApplicationResult {
     if reprs2.first().is_none_or(|x| x.as_str() != "tuple_to_atom") {
         return Err(RuleNotApplicable);
     }
-
-    let decl = symbols.lookup(name).unwrap();
-    let decl2 = symbols.lookup(name2).unwrap();
-    let decl_borrowed = decl.borrow();
-    let decl_borrowed2 = decl2.borrow();
 
     let domain = decl
         .borrow()

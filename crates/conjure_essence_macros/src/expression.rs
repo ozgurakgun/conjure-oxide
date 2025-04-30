@@ -1,5 +1,4 @@
 use conjure_essence_parser::errors::EssenceParseError;
-use conjure_essence_parser::expression::child_expr;
 use conjure_essence_parser::util::named_children;
 use proc_macro2::{Span, TokenStream};
 use quote::quote;

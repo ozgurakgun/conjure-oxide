@@ -2,10 +2,6 @@ use std::fmt::Display;
 
 use serde::{Deserialize, Serialize};
 
-use crate::metadata::Metadata;
-
-use super::Expression;
-
 /// A reference to an object stored in the [`SymbolTable`].
 #[derive(Clone, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum Name {
